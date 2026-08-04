@@ -1,0 +1,104 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "paigack/injuryrisk/lib"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn assess_injury_risk(Array[DailyRecord], String, Array[Rule]) -> RiskAssessment?
+
+pub fn average_fatigue(ArrayView[DailyRecord]) -> Double
+
+pub fn average_load(ArrayView[DailyRecord]) -> Double
+
+pub fn average_sleep_hours(ArrayView[DailyRecord]) -> Double
+
+pub fn average_sleep_quality(ArrayView[DailyRecord]) -> Double
+
+pub fn compute_load_spike(Array[DailyRecord], Int) -> Double
+
+pub fn evaluate_rule(Array[DailyRecord], Int, Rule) -> RuleResult
+
+pub fn find_record_index(Array[DailyRecord], String) -> Int?
+
+pub fn generate_healthy_athlete() -> Array[DailyRecord]
+
+pub fn generate_injured_athlete() -> Array[DailyRecord]
+
+pub fn generate_overtired_athlete() -> Array[DailyRecord]
+
+pub fn generate_workload_spike_athlete() -> Array[DailyRecord]
+
+pub fn get_default_rules() -> Array[Rule]
+
+pub fn get_window_by_index(Array[DailyRecord], Int, Int) -> ArrayView[DailyRecord]
+
+pub fn max_pain_level(ArrayView[DailyRecord]) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct DailyRecord {
+  date : String
+  training_duration : Double
+  training_intensity : Double
+  pain_level : Double
+  pain_site : String?
+  sleep_hours : Double
+  sleep_quality : Double
+  fatigue : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum Metric {
+  AcuteLoad
+  ChronicLoad
+  ACWR
+  SleepHours
+  SleepQuality
+  PainLevel
+  FatigueLevel
+  LoadSpike
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum Operator {
+  GreaterThan
+  LessThan
+  EqualTo
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RiskAssessment {
+  date : String
+  risk_level : RiskLevel
+  triggered_rules : Array[RuleResult]
+  summary : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum RiskLevel {
+  Low
+  Medium
+  High
+} derive(Eq, ToJson, @debug.Debug)
+pub fn RiskLevel::max(Self, Self) -> Self
+
+pub(all) struct Rule {
+  name : String
+  metric : Metric
+  op : Operator
+  threshold : Double
+  window_size : Int
+  severity : RiskLevel
+  description : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RuleResult {
+  rule : Rule
+  triggered : Bool
+  actual_value : Double
+  explanation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+// Type aliases
+
+// Traits
+
