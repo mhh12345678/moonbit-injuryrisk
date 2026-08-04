@@ -17,6 +17,7 @@ A lightweight, high-performance rule engine for sports movement injury risk stra
 The following block is type-checked and executed as part of the test suite:
 
 ```mbt check
+///|
 test "Quickstart example" {
   // 1. Create telemetry records
   let records = [
@@ -28,10 +29,10 @@ test "Quickstart example" {
       pain_site: None,
       sleep_hours: 8.0,
       sleep_quality: 4.0,
-      fatigue: 2.0
-    }
+      fatigue: 2.0,
+    },
   ]
-  
+
   // 2. Define risk rules
   let rules = [
     Rule::{
@@ -41,13 +42,13 @@ test "Quickstart example" {
       threshold: 300.0,
       window_size: 1,
       severity: RiskLevel::Medium,
-      description: "Workload exceeds 300."
-    }
+      description: "Workload exceeds 300.",
+    },
   ]
-  
+
   // 3. Assess injury risk
   let assessment = assess_injury_risk(records, "2026-08-01", rules)
-  
+
   // 4. Verify assessment
   assert_true(assessment is Some(_))
   let report = assessment.unwrap()

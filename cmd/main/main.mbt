@@ -1,6 +1,7 @@
+///|
 fn main {
   let rules = @lib.get_default_rules()
-  
+
   println("==================================================")
   println("  MOONBIT INJURY RISK RULE ENGINE DEMO")
   println("==================================================")
@@ -9,7 +10,9 @@ fn main {
   let healthy_records = @lib.generate_healthy_athlete()
   match @lib.assess_injury_risk(healthy_records, "2026-08-30", rules) {
     Some(report) => {
-      println("\n>>> SCENARIO 1: HEALTHY ATHLETE (Balanced Workload & Recovery)")
+      println(
+        "\n>>> SCENARIO 1: HEALTHY ATHLETE (Balanced Workload & Recovery)",
+      )
       println("Report Summary:")
       println(report.summary)
     }
@@ -31,7 +34,9 @@ fn main {
   let overtired_records = @lib.generate_overtired_athlete()
   match @lib.assess_injury_risk(overtired_records, "2026-08-30", rules) {
     Some(report) => {
-      println("\n>>> SCENARIO 3: OVERTIRED ATHLETE (Sleep Deprived & High Fatigue)")
+      println(
+        "\n>>> SCENARIO 3: OVERTIRED ATHLETE (Sleep Deprived & High Fatigue)",
+      )
       println("Report Summary:")
       println(report.summary)
     }

@@ -1,4 +1,5 @@
-///| Telemetry record representing a single day's training load and recovery state.
+///|
+/// Telemetry record representing a single day's training load and recovery state.
 pub(all) struct DailyRecord {
   date : String
   training_duration : Double // in minutes, e.g. 60.0
@@ -10,7 +11,8 @@ pub(all) struct DailyRecord {
   fatigue : Double // subjective fatigue scale 1-10
 } derive(Debug, Eq, ToJson)
 
-///| Metrics that can be evaluated over a sliding window.
+///|
+/// Metrics that can be evaluated over a sliding window.
 pub(all) enum Metric {
   AcuteLoad // Average training load (duration * intensity) over the acute window (typically 7 days)
   ChronicLoad // Average training load over the chronic window (typically 28 days)
@@ -22,21 +24,24 @@ pub(all) enum Metric {
   LoadSpike // Percentage increase of acute load compared to the previous week
 } derive(Debug, Eq, ToJson)
 
-///| Operators for rule conditions.
+///|
+/// Operators for rule conditions.
 pub(all) enum Operator {
   GreaterThan
   LessThan
   EqualTo
 } derive(Debug, Eq, ToJson)
 
-///| Risk levels for stratification.
+///|
+/// Risk levels for stratification.
 pub(all) enum RiskLevel {
   Low
   Medium
   High
 } derive(Debug, Eq, ToJson)
 
-///| Compare and returns the highest of two RiskLevels.
+///|
+/// Compare and returns the highest of two RiskLevels.
 pub fn RiskLevel::max(self : RiskLevel, other : RiskLevel) -> RiskLevel {
   match (self, other) {
     (High, _) | (_, High) => High
@@ -45,7 +50,8 @@ pub fn RiskLevel::max(self : RiskLevel, other : RiskLevel) -> RiskLevel {
   }
 }
 
-///| Rule condition mapping a Metric condition to a RiskLevel severity.
+///|
+/// Rule condition mapping a Metric condition to a RiskLevel severity.
 pub(all) struct Rule {
   name : String
   metric : Metric
@@ -56,7 +62,8 @@ pub(all) struct Rule {
   description : String
 } derive(Debug, Eq, ToJson)
 
-///| Evaluation result for a specific rule.
+///|
+/// Evaluation result for a specific rule.
 pub(all) struct RuleResult {
   rule : Rule
   triggered : Bool
@@ -64,7 +71,8 @@ pub(all) struct RuleResult {
   explanation : String
 } derive(Debug, Eq, ToJson)
 
-///| Overall risk assessment report.
+///|
+/// Overall risk assessment report.
 pub(all) struct RiskAssessment {
   date : String
   risk_level : RiskLevel

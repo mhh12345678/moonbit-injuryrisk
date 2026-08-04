@@ -1,7 +1,7 @@
 import {
-  "paigack/injuryrisk/lib"
+  "paigack/injuryrisk/lib",
 }
 
 options(
-  "is-main": true
+  "is-main": true,
 )
