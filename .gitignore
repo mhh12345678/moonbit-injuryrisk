@@ -1,0 +1,14 @@
+# MoonBit build outputs
+_build/
+.repos/
+
+# IDE/Editor and local configs
+.gemini/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Compiled executables
+*.exe
