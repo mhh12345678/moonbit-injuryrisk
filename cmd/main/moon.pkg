@@ -1,0 +1,7 @@
+import {
+  "paigack/injuryrisk/lib"
+}
+
+options(
+  "is-main": true
+)
