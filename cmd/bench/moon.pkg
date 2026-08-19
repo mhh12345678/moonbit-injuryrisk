@@ -1,7 +1,5 @@
 import {
   "mhh12345678/injuryrisk/lib",
-  "moonbitlang/core/env",
-  "moonbitlang/core/json",
 }
 
 pkgtype(kind: "executable")

@@ -1,70 +1,89 @@
-name: Test
+name: MoonBit CI
 
 on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
-    name: Test (${{ matrix.os }})
+  validate:
+    name: Validate (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
-    defaults:
-      run:
-        shell: bash
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-      - name: Setup Moon env (Linux)
+      - name: Install native build tools on Linux
         if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc libssl-dev
-          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
-          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+        run: sudo apt-get update && sudo apt-get install -y gcc
 
-      - name: Setup Moon env (macOS)
+      - name: Install native build tools on macOS
         if: runner.os == 'macOS'
+        run: brew install gcc
+
+      - name: Install MoonBit stable on Unix
+        if: runner.os != 'Windows'
         run: |
-          brew install gcc openssl
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
-      - name: Setup Moon env (Windows)
+      - name: Install MoonBit stable on Windows
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
           Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
           irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
-          echo "$HOME/.moon/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+          "$HOME\.moon\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
-      - name: Setup MSYS2 + MinGW + openssl (Windows)
+      - name: Install C toolchain on Windows
         if: runner.os == 'Windows'
         uses: msys2/setup-msys2@v2
         with:
           msystem: UCRT64
           update: true
-          install: >-
-            mingw-w64-ucrt-x86_64-gcc
-            mingw-w64-ucrt-x86_64-openssl
+          install: mingw-w64-ucrt-x86_64-gcc
 
-      - name: Moon Check
+      - name: Show toolchain
+        run: moon version --all
+
+      - name: Format and generated interface check
         run: |
-          moon fmt --check
-          moon check --deny-warn
+          moon fmt
+          git diff --exit-code
           moon info
           git diff --exit-code
-          git status
 
-      - name: Moon test
+      - name: Check all targets
+        run: moon check --target all --deny-warn
+
+      - name: Test all targets
+        run: moon test --target all --deny-warn
+
+      - name: Native coverage and CLI smoke test
+        if: runner.os == 'Linux'
         run: |
-          echo moon test
-          moon test --deny-warn --enable-coverage
+          moon test --target native --deny-warn --enable-coverage
           moon coverage report -f summary
-          moon coverage analyze
+          moon run --target native cmd/main
+          moon run --target native --release cmd/bench
+
+      - name: Enforce production source size
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Recurse -File -Filter *.mbt |
+            Where-Object { $_.FullName -notmatch '\\(_build|\.mooncakes|\.repos)\\' -and $_.Name -notmatch '(_test|_wbtest)\.mbt$' }
+          $lines = ($files | Get-Content | Measure-Object -Line).Lines
+          Write-Host "Production MoonBit source lines: $lines"
+          if ($lines -lt 8000) { throw "Production source size is below 8000 lines" }
+
+      - name: Ensure generated files are committed
+        run: git diff --exit-code

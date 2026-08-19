@@ -1,26 +1,308 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "paigack/injuryrisk/lib"
+package "mhh12345678/injuryrisk/lib"
 
 import {
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn action_catalog() -> Array[RecoveryAction]
+
+pub fn action_for_signal(RiskSignal) -> RecoveryAction
+
+pub fn action_plan_load_change(Array[RecoveryAction]) -> Double
+
+pub fn action_text(RecoveryAction) -> String
+
+pub fn actions_from_assessment(ComprehensiveAssessment) -> Array[RecoveryAction]
+
+pub fn acute_load_sum(Array[DailyRecord], Int, Int) -> Double
+
+pub fn acwr_at(Array[DailyRecord], Int, Int, Int) -> Double
+
+pub fn add_days(DateParts, Int) -> DateParts?
+
+pub fn adherence_report(Array[TrainingTarget], Array[DailyRecord], Double) -> AdherenceReport
+
+pub fn adherence_report_text(AdherenceReport) -> String
+
+pub fn adherence_status_name(AdherenceStatus) -> String
+
+pub fn allowed_next_load(Double, DecisionRecord) -> Double
+
+pub fn analysis_note(Double, QualityReport) -> String
+
+pub fn analysis_risk_level(TrainingAnalysis) -> RiskLevel
+
+pub fn analysis_text(TrainingAnalysis) -> String
+
+pub fn analyze_training_block(Array[DailyRecord], RiskPolicy) -> TrainingAnalysis
+
+pub fn append_record(TelemetryStore, DailyRecord) -> (TelemetryStore, StoreUpdate)
+
+pub fn append_records(TelemetryStore, Array[DailyRecord]) -> (TelemetryStore, Array[StoreUpdate])
+
+pub fn assess_comprehensive(Array[DailyRecord], String, RiskPolicy) -> ComprehensiveAssessment?
+
+pub fn assess_dates(Array[DailyRecord], Array[String], RiskPolicy) -> Array[BatchRow]
+
+pub fn assess_every_record(Array[DailyRecord], RiskPolicy) -> Array[BatchRow]
+
 pub fn assess_injury_risk(Array[DailyRecord], String, Array[Rule]) -> RiskAssessment?
+
+pub fn assess_latest(Array[DailyRecord], RiskPolicy) -> ComprehensiveAssessment?
+
+pub fn assess_target(TrainingTarget, DailyRecord?, Double) -> AdherenceRow
+
+pub fn assess_with_defaults(Array[DailyRecord], String) -> ComprehensiveAssessment?
+
+pub fn assessment_delta(ComprehensiveAssessment, ComprehensiveAssessment) -> AssessmentDelta
+
+pub fn assessment_is_actionable(ComprehensiveAssessment) -> Bool
+
+pub fn assessment_summary(String, RiskLevel, Double, Double, LoadSummary, RecoverySummary, Int) -> String
+
+pub fn assessment_text(ComprehensiveAssessment) -> String
+
+pub fn athlete_ids_by_priority(CohortSummary) -> Array[String]
+
+pub fn athlete_profile(String, String, Double, Double, Double, Double, RiskPolicy) -> AthleteProfile
+
+pub fn athlete_series(String, Array[DailyRecord]) -> AthleteSeries
+
+pub fn audit_is_reproducible(PipelineAudit) -> Bool
+
+pub fn audit_records(Array[DailyRecord], RiskPolicy) -> PipelineAudit
+
+pub fn audit_text(PipelineAudit) -> String
 
 pub fn average_fatigue(ArrayView[DailyRecord]) -> Double
 
+pub fn average_fatigue_for(Array[DailyRecord], Int, Int) -> Double
+
 pub fn average_load(ArrayView[DailyRecord]) -> Double
+
+pub fn average_pain_for(Array[DailyRecord], Int, Int) -> Double
+
+pub fn average_recovery_score(ArrayView[Double]) -> Double
+
+pub fn average_recovery_score_for(Array[DailyRecord], Int, Int, RecoveryWeights, Double) -> Double
+
+pub fn average_session_intensity(Array[TrainingSession]) -> Double
 
 pub fn average_sleep_hours(ArrayView[DailyRecord]) -> Double
 
+pub fn average_sleep_hours_for(Array[DailyRecord], Int, Int) -> Double
+
 pub fn average_sleep_quality(ArrayView[DailyRecord]) -> Double
+
+pub fn average_sleep_quality_for(Array[DailyRecord], Int, Int) -> Double
+
+pub fn batch_average_by_risk(Array[BatchRow], RiskLevel) -> Double
+
+pub fn batch_high_risk_dates(Array[BatchRow]) -> Array[String]
+
+pub fn batch_readiness_below(Array[BatchRow], Double) -> Array[BatchRow]
+
+pub fn batch_report_csv(BatchReport) -> String
+
+pub fn batch_report_for_records(Array[DailyRecord], RiskPolicy) -> BatchReport
+
+pub fn batch_report_text(BatchReport) -> String
+
+pub fn batch_row(ComprehensiveAssessment) -> BatchRow
+
+pub fn batch_row_csv(BatchRow) -> String
+
+pub fn batch_rows_in_range(Array[BatchRow], DateRange) -> Array[BatchRow]
+
+pub fn benchmark_records(Int) -> Array[DailyRecord]
+
+pub fn benchmark_result_text(BenchmarkResult) -> String
+
+pub fn bounded(Double, Double, Double) -> Double
+
+pub fn bounded_training_load(DailyRecord) -> Double
+
+pub fn bounded_training_loads(Array[DailyRecord]) -> Array[Double]
+
+pub fn build_action_plan(RiskLevel, Double, Array[RiskSignal]) -> ActionPlan
+
+pub fn build_batch_report(Array[BatchRow]) -> BatchReport
+
+pub fn build_risk_signals(Array[DailyRecord], Int, RiskPolicy) -> Array[RiskSignal]
+
+pub fn build_timeline(Array[DailyRecord], RiskPolicy) -> RiskTimeline
+
+pub fn build_training_plan(String, String, PlanPhase, Double, Int, RiskPolicy, Array[DailyRecord]) -> TrainingPlan
+
+pub fn check_assessment_contract(ComprehensiveAssessment) -> ContractReport
+
+pub fn check_csv_contract(TelemetryCsvResult) -> ContractReport
+
+pub fn check_policy_contract(RiskPolicy) -> ContractReport
+
+pub fn check_record_contract(Array[DailyRecord]) -> ContractReport
+
+pub fn choose_target_date(Array[DailyRecord], String?) -> String?
+
+pub fn chronic_load_average(Array[DailyRecord], Int, Int) -> Double
+
+pub fn classify_forecast(Double, Double, Double) -> ForecastBand
+
+pub fn classify_rule_group(PolicyRule) -> RuleGroup
+
+pub fn classify_trend(ArrayView[Double], Double, Int) -> TrendDirection
+
+pub fn coefficient_of_variation_values(ArrayView[Double]) -> Double
+
+pub fn cohort_readiness_band(CohortSummary) -> String
+
+pub fn cohort_summary_text(CohortSummary) -> String
+
+pub fn compare_adjacent_windows(Array[DailyRecord], Int, Int, Int) -> WindowComparison
+
+pub fn compare_cohorts(CohortSummary, CohortSummary) -> CohortDelta
+
+pub fn compare_dates(DateParts, DateParts) -> DateOrder
+
+pub fn compare_periods(Array[DailyRecord], Array[DailyRecord], RiskPolicy) -> PeriodComparison
+
+pub fn compare_trends(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn completeness_ratio(Array[DailyRecord]) -> Double
 
 pub fn compute_load_spike(Array[DailyRecord], Int) -> Double
 
+pub fn consecutive_training_days(Array[DailyRecord]) -> Array[Int]
+
+pub fn conservative_policy() -> RiskPolicy
+
+pub fn contract_check_names(ContractReport) -> Array[String]
+
+pub fn contract_failed_checks(ContractReport) -> Array[ContractCheck]
+
+pub fn contract_report_passes(ContractReport) -> Bool
+
+pub fn contract_report_text(ContractReport) -> String
+
+pub fn contract_warning_text(ContractReport) -> String
+
+pub fn correlation(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn covariance(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn csv_fields(String) -> Array[String]
+
+pub fn csv_is_usable(TelemetryCsvResult) -> Bool
+
+pub fn csv_result_text(TelemetryCsvResult) -> String
+
+pub fn daily_training_load(DailyRecord) -> Double
+
+pub fn dashboard_alerts(ComprehensiveAssessment) -> Array[String]
+
+pub fn dashboard_csv(DashboardSnapshot) -> String
+
+pub fn dashboard_range(RiskTimeline) -> DashboardRange
+
+pub fn dashboard_range_text(DashboardRange) -> String
+
+pub fn dashboard_snapshot(ComprehensiveAssessment) -> DashboardSnapshot
+
+pub fn dashboard_snapshot_text(DashboardSnapshot) -> String
+
+pub fn dashboard_status(ComprehensiveAssessment) -> String
+
+pub fn data_quality_signal(QualityReport) -> RiskSignal?
+
+pub fn date_is_in_range(DateParts, DateRange) -> Bool
+
+pub fn date_order_issues(Array[DailyRecord]) -> Array[QualityIssue]
+
+pub fn date_ordinal(DateParts) -> Int
+
+pub fn dates_in_range(DateRange) -> Array[DateParts]
+
+pub fn dates_in_records(Array[DailyRecord]) -> Array[DateParts]
+
+pub fn days_between(DateParts, DateParts) -> Int
+
+pub fn days_in_month(Int, Int) -> Int
+
+pub fn decision_catalog() -> Array[String]
+
+pub fn decision_for_records(Array[DailyRecord], RiskPolicy) -> DecisionRecord?
+
+pub fn decision_is_restrictive(DecisionRecord) -> Bool
+
+pub fn decision_name(TrainingDecision) -> String
+
+pub fn decision_requires_review(DecisionRecord, Int) -> Bool
+
+pub fn decision_text(DecisionRecord) -> String
+
+pub fn default_athlete_profile(String) -> AthleteProfile
+
+pub fn default_quality_policy() -> QualityPolicy
+
+pub fn default_recovery_weights() -> RecoveryWeights
+
+pub fn default_report_options() -> ReportOptions
+
+pub fn default_risk_policy() -> RiskPolicy
+
+pub fn default_screening_protocol() -> ScreeningProtocol
+
+pub fn default_targets(Array[DailyRecord]) -> Array[TrainingTarget]
+
+pub fn default_workflow_config() -> WorkflowConfig
+
+pub fn depleted_day_count(Array[DailyRecord], RecoveryWeights, Double, Double) -> Int
+
+pub fn distribute_daily_session_load(Array[DailyRecord], Array[TrainingSession]) -> Array[Double]
+
+pub fn dominant_pain_site(Array[DailyRecord]) -> String?
+
+pub fn duplicate_date_indices(Array[DailyRecord]) -> Array[Int]
+
+pub fn effective_record_count(Array[DailyRecord]) -> Int
+
+pub fn evaluate_policy(Array[DailyRecord], Int, RiskPolicy) -> Array[PolicyDecision]
+
+pub fn evaluate_policy_rule(Array[DailyRecord], Int, PolicyRule) -> PolicyDecision
+
+pub fn evaluate_profile(AthleteProfile, Array[DailyRecord]) -> ProfileEvaluation
+
 pub fn evaluate_rule(Array[DailyRecord], Int, Rule) -> RuleResult
 
+pub fn evaluate_scenario(ScenarioKind, Int) -> ComprehensiveAssessment?
+
+pub fn ewma(ArrayView[Double], Double) -> Double
+
+pub fn explain_assessment(ComprehensiveAssessment) -> Explanation
+
+pub fn explanation_text(Explanation) -> String
+
+pub fn exponential_smoothing(ArrayView[Double], Double) -> Array[Double]
+
+pub fn fatigue_score(Double, Double) -> Double
+
+pub fn fill_missing_records(Array[DailyRecord], Double) -> Array[DailyRecord]
+
 pub fn find_record_index(Array[DailyRecord], String) -> Int?
+
+pub fn first_differences(ArrayView[Double]) -> Array[Double]
+
+pub fn forecast_band_name(ForecastBand) -> String
+
+pub fn forecast_rationale(ForecastBand, Double, Double) -> String
+
+pub fn forecast_text(TrainingForecast) -> String
+
+pub fn forecast_training(Array[DailyRecord], RiskPolicy, Int, Double) -> TrainingForecast
+
+pub fn format_date(DateParts) -> String
 
 pub fn generate_healthy_athlete() -> Array[DailyRecord]
 
@@ -28,17 +310,795 @@ pub fn generate_injured_athlete() -> Array[DailyRecord]
 
 pub fn generate_overtired_athlete() -> Array[DailyRecord]
 
+pub fn generate_scenario(ScenarioKind, Int) -> Array[DailyRecord]
+
 pub fn generate_workload_spike_athlete() -> Array[DailyRecord]
+
+pub fn geometric_mean(ArrayView[Double]) -> Double
 
 pub fn get_default_rules() -> Array[Rule]
 
 pub fn get_window_by_index(Array[DailyRecord], Int, Int) -> ArrayView[DailyRecord]
 
+pub fn hard_easy_ratio(Array[DailyRecord], Double, Double) -> Double
+
+pub fn harmonic_mean(ArrayView[Double]) -> Double
+
+pub fn has_blocking_quality_issue(QualityReport) -> Bool
+
+pub fn health_check(Array[DailyRecord]) -> PipelineAudit
+
+pub fn high_fatigue_day_count(Array[DailyRecord], Double) -> Int
+
+pub fn high_intensity(Array[DailyRecord], Double) -> Array[DailyRecord]
+
+pub fn high_intensity_day_ratio(Array[DailyRecord], Double) -> Double
+
+pub fn high_intensity_sessions(Array[TrainingSession], Double) -> Array[TrainingSession]
+
+pub fn highest_policy_risk(ArrayView[PolicyDecision]) -> RiskLevel
+
+pub fn highest_risk_athletes(CohortSummary, RiskLevel) -> Array[AthleteScreening]
+
+pub fn highest_risk_point(RiskTimeline) -> TimelinePoint?
+
+pub fn highest_signal_risk(ArrayView[RiskSignal]) -> RiskLevel
+
+pub fn interquartile_range(ArrayView[Double]) -> Double
+
+pub fn invalid_record_indices(Array[DailyRecord], QualityPolicy) -> Array[Int]
+
+pub fn latest_record(TelemetryStore) -> DailyRecord?
+
+pub fn library_capabilities() -> Array[String]
+
+pub fn linear_intercept(ArrayView[Double]) -> Double
+
+pub fn linear_slope(ArrayView[Double]) -> Double
+
+pub fn load_bands(Array[DailyRecord], Array[Double]) -> Array[LoadBand]
+
+pub fn load_by_kind(Array[TrainingSession], SessionKind) -> Double
+
+pub fn load_concentration(Array[DailyRecord], Int) -> Double
+
+pub fn load_recovery_ratio(Double, Double) -> Double
+
+pub fn load_trend(ArrayView[Double], Double) -> LoadTrend
+
+pub fn load_z_score(ArrayView[Double], Double) -> Double
+
+pub fn longest_risk_streak(RiskTimeline, RiskLevel) -> Int
+
+pub fn longest_training_block(Array[DailyRecord]) -> Int
+
+pub fn low_intensity(Array[DailyRecord], Double) -> Array[DailyRecord]
+
+pub fn low_quality_night_count(Array[DailyRecord], Double) -> Int
+
+pub fn make_date_range(DateParts, DateParts) -> DateRange?
+
 pub fn max_pain_level(ArrayView[DailyRecord]) -> Double
+
+pub fn maximum_load_values(ArrayView[Double]) -> Double
+
+pub fn maximum_pain_change(Array[DailyRecord]) -> Double
+
+pub fn mean_absolute_error(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn mean_load_values(ArrayView[Double]) -> Double
+
+pub fn median_absolute_deviation(ArrayView[Double]) -> Double
+
+pub fn merge_record_sources(Array[DailyRecord], Array[DailyRecord]) -> Array[DailyRecord]
+
+pub fn merge_sessions(Array[TrainingSession]) -> Array[TrainingSession]
+
+pub fn metric_catalog() -> Array[MetricDescription]
+
+pub fn metric_catalog_text() -> String
+
+pub fn metric_default_window(Metric) -> Int
+
+pub fn metric_description(Metric) -> MetricDescription
+
+pub fn metric_direction_is_positive(Metric, Double) -> Bool
+
+pub fn metric_name_public(Metric) -> String
+
+pub fn metric_unit(Metric) -> String
+
+pub fn metric_value_at(Array[DailyRecord], String, Metric) -> Double?
+
+pub fn microcycle_day(String, Double, Double, SessionKind, Bool, String) -> MicrocycleDay
+
+pub fn microcycle_is_balanced(MicrocyclePlan) -> Bool
+
+pub fn microcycle_load_profile(MicrocyclePlan) -> Array[Double]
+
+pub fn microcycle_rest_ratio(MicrocyclePlan) -> Double
+
+pub fn microcycle_text(MicrocyclePlan) -> String
+
+pub fn minimum_load_values(ArrayView[Double]) -> Double
+
+pub fn missing_dates(Array[DailyRecord]) -> Array[String]
+
+pub fn missing_history_signal(Array[DailyRecord], Int) -> RiskSignal?
+
+pub fn moderate_intensity(Array[DailyRecord], Double, Double) -> Array[DailyRecord]
+
+pub fn monotony_signal(Array[DailyRecord], Double) -> RiskSignal?
+
+pub fn moving_average(ArrayView[Double], Int) -> Array[Double]
+
+pub fn new_session(String, String, Double, Double, SessionKind, Double?, String) -> TrainingSession
+
+pub fn new_telemetry_store(Array[DailyRecord], QualityPolicy) -> TelemetryStore
+
+pub fn normalize(Double, Double, Double) -> Double
+
+pub fn normalize_records(Array[DailyRecord]) -> Array[DailyRecord]
+
+pub fn numeric_summary(ArrayView[Double]) -> String
+
+pub fn operational_decision(ComprehensiveAssessment) -> DecisionRecord
+
+pub fn ordinal_date(Int) -> DateParts?
+
+pub fn outlier_indices(ArrayView[Double], Double) -> Array[Int]
+
+pub fn overtraining_band(Double) -> String
+
+pub fn overtraining_index(LoadSummary, RecoverySummary, PainSummary, ReadinessSummary) -> Double
+
+pub fn pain_burden(Array[DailyRecord]) -> Double
+
+pub fn pain_episodes(Array[DailyRecord], Double) -> Array[PainEpisode]
+
+pub fn pain_escalating(Array[DailyRecord], Double) -> Bool
+
+pub fn pain_free_day_count(Array[DailyRecord]) -> Int
+
+pub fn pain_free_ratio(Array[DailyRecord]) -> Double
+
+pub fn pain_levels(Array[DailyRecord]) -> Array[Double]
+
+pub fn pain_reporting_percent(Array[DailyRecord]) -> Double
+
+pub fn pain_score(Double, Double) -> Double
+
+pub fn pain_signal(Array[DailyRecord], Int, Int, Double) -> RiskSignal?
+
+pub fn pain_site_name(String?) -> String
+
+pub fn pain_site_totals(Array[DailyRecord]) -> Array[(String, Double)]
+
+pub fn pain_summary_text(PainSummary) -> String
+
+pub fn painful_records(Array[DailyRecord], Double) -> Array[DailyRecord]
+
+pub fn parse_date(String) -> DateParts?
+
+pub fn parse_decimal_value(String) -> Double?
+
+pub fn parse_telemetry_csv(String) -> TelemetryCsvResult
+
+pub fn percentage_change(Double, Double) -> Double
+
+pub fn performance_policy() -> RiskPolicy
+
+pub fn persistent_pain_sites(Array[DailyRecord], Double, Int) -> Array[String]
+
+pub fn phase_load_multiplier(PlanPhase) -> Double
+
+pub fn plan_focus(RiskLevel, Double) -> String
+
+pub fn plan_is_safe(TrainingPlan) -> Bool
+
+pub fn plan_phase_name(PlanPhase) -> String
+
+pub fn plan_rest_days(TrainingPlan) -> Array[String]
+
+pub fn plan_targets(TrainingPlan) -> Array[TrainingTarget]
+
+pub fn plan_text(TrainingPlan) -> String
+
+pub fn policy_catalog(RiskPolicy) -> Array[PolicyCatalogEntry]
+
+pub fn policy_contains_rule(RiskPolicy, String) -> Bool
+
+pub fn policy_decision_text(PolicyDecision) -> String
+
+pub fn policy_explanation(RiskPolicy) -> String
+
+pub fn policy_intersection(RiskPolicy, RiskPolicy) -> RiskPolicy
+
+pub fn policy_metric_value(Array[DailyRecord], Int, Metric, Int) -> Double
+
+pub fn policy_rule(String, String, Metric, Operator, Double, Int, RiskLevel, Double, String) -> PolicyRule
+
+pub fn policy_rule_ids(RiskPolicy) -> Array[String]
+
+pub fn policy_rules_by_group(RiskPolicy, RuleGroup) -> Array[PolicyRule]
+
+pub fn policy_rules_by_metric(RiskPolicy, Metric) -> Array[PolicyRule]
+
+pub fn policy_summary(RiskPolicy) -> String
+
+pub fn policy_with_rule(RiskPolicy, PolicyRule) -> RiskPolicy
+
+pub fn policy_with_windows(RiskPolicy, Int, Int, Int) -> RiskPolicy
+
+pub fn policy_without_rule(RiskPolicy, String) -> RiskPolicy
+
+pub fn predicted_value(ArrayView[Double], Int) -> Double
+
+pub fn profile_action(AthleteProfile, ComprehensiveAssessment) -> String
+
+pub fn profile_policy(AthleteProfile) -> RiskPolicy
+
+pub fn profile_text(ProfileEvaluation) -> String
+
+pub fn progression_guardrail(Array[DailyRecord], RiskPolicy, Double) -> ProgressionGuardrail
+
+pub fn project_action_required_text(Array[DailyRecord]) -> String
+
+pub fn project_acwr(Double, Double, Double) -> Double
+
+pub fn project_has_actionable_risk(Array[DailyRecord]) -> Bool
+
+pub fn project_health_line(Array[DailyRecord]) -> String
+
+pub fn project_load(ArrayView[Double], Int) -> Double
+
+pub fn project_ready(Array[DailyRecord]) -> Bool
+
+pub fn project_recommended_change(Array[DailyRecord]) -> Double
+
+pub fn project_recommended_change_text(Array[DailyRecord]) -> String
+
+pub fn project_recovery(ArrayView[Double], Int) -> Double
+
+pub fn project_snapshot(Array[DailyRecord]) -> ProjectSnapshot
+
+pub fn project_snapshot_text(ProjectSnapshot) -> String
+
+pub fn project_status(Array[DailyRecord]) -> String
+
+pub fn project_status_text(Array[DailyRecord]) -> String
+
+pub fn project_summary(Array[DailyRecord]) -> String
+
+pub fn project_summary_lines(Array[DailyRecord]) -> Array[String]
+
+pub fn propose_microcycle(Array[DailyRecord], RiskPolicy, String, Int, Double) -> MicrocyclePlan
+
+pub fn protocol_stage_name(ProtocolStage) -> String
+
+pub fn protocol_text(ProtocolResult) -> String
+
+pub fn quality_band(Double) -> String
+
+pub fn quality_report_text(QualityReport) -> String
+
+pub fn quality_score(Double, Double) -> Double
+
+pub fn quantile(ArrayView[Double], Double) -> Double
+
+pub fn quick_metrics(Array[DailyRecord]) -> QuickMetrics
+
+pub fn quick_report(Array[DailyRecord]) -> String
+
+pub fn r_squared(ArrayView[Double]) -> Double
+
+pub fn range_length(DateRange) -> Int
+
+pub fn readiness_alerts(Array[ReadinessSnapshot]) -> Array[ReadinessSnapshot]
+
+pub fn readiness_band(Double) -> ReadinessBand
+
+pub fn readiness_band_name(ReadinessBand) -> String
+
+pub fn readiness_component_name(ReadinessComponentKind) -> String
+
+pub fn readiness_for_record(DailyRecord, Double, Double, Double) -> ReadinessSnapshot
+
+pub fn readiness_history(Array[DailyRecord], Int, Double) -> Array[ReadinessSnapshot]
+
+pub fn readiness_score(LoadSummary, RecoverySummary, Double, QualityReport) -> Double
+
+pub fn readiness_scores(Array[ReadinessSnapshot]) -> Array[Double]
+
+pub fn readiness_suggestion(ReadinessBand) -> String
+
+pub fn readiness_summary_text(ReadinessSummary) -> String
+
+pub fn recommendation_priority_name(RecommendationPriority) -> String
+
+pub fn recommendations_from_signals(Array[RiskSignal]) -> Array[Recommendation]
+
+pub fn record_at_date(TelemetryStore, String) -> DailyRecord?
+
+pub fn record_recovery_score(DailyRecord, RecoveryWeights, Double) -> Double
+
+pub fn records_between(TelemetryStore, String, String) -> Array[DailyRecord]
+
+pub fn records_in_date_range(Array[DailyRecord], DateRange) -> Array[DailyRecord]
+
+pub fn records_to_csv(Array[DailyRecord]) -> String
+
+pub fn records_window_from_end(Array[DailyRecord], Int, Int) -> Array[DailyRecord]
+
+pub fn records_with_valid_dates(Array[DailyRecord]) -> Array[DailyRecord]
+
+pub fn recovery_action_name(RecoveryActionKind) -> String
+
+pub fn recovery_adherence_percent(Array[DailyRecord], Double, Double) -> Double
+
+pub fn recovery_band(Double) -> RecoveryBand
+
+pub fn recovery_band_name(RecoveryBand) -> String
+
+pub fn recovery_load_balance(Array[DailyRecord], Int, Int, RecoveryWeights, Double, Double) -> Double
+
+pub fn recovery_scores(Array[DailyRecord], RecoveryWeights, Double) -> Array[Double]
+
+pub fn recovery_signal(Array[DailyRecord], Int, Int, RiskPolicy) -> RiskSignal?
+
+pub fn recovery_summary(Array[DailyRecord], Int, Int, RecoveryWeights, Double) -> RecoverySummary
+
+pub fn recovery_trend(Array[DailyRecord], Int, RecoveryWeights, Double) -> LoadTrend
+
+pub fn remove_record(TelemetryStore, String) -> (TelemetryStore, StoreUpdate)
+
+pub fn render_assessment(ComprehensiveAssessment, ReportOptions) -> RiskReport
+
+pub fn render_load_section(LoadSummary) -> String
+
+pub fn render_plan_section(ActionPlan) -> String
+
+pub fn render_quality_section(QualityReport) -> String
+
+pub fn render_recovery_section(RecoverySummary) -> String
+
+pub fn render_signals_section(SignalSummary) -> String
+
+pub fn replace_record(TelemetryStore, DailyRecord) -> (TelemetryStore, StoreUpdate)
+
+pub fn report_for_records(Array[DailyRecord], String, RiskPolicy, ReportOptions) -> RiskReport?
+
+pub fn report_format_name(ReportFormat) -> String
+
+pub fn report_text(RiskReport) -> String
+
+pub fn rest_day_count(Array[DailyRecord]) -> Int
+
+pub fn rest_day_targets(Array[String]) -> Array[TrainingTarget]
+
+pub fn review_microcycle(MicrocyclePlan, Array[DailyRecord]) -> MicrocycleReview
+
+pub fn review_training_plan(TrainingPlan, Array[DailyRecord]) -> PlanReview
+
+pub fn risk_level_for_score(Double) -> RiskLevel
+
+pub fn risk_level_name(RiskLevel) -> String
+
+pub fn risk_matrix_cell(Int, Int) -> RiskMatrixCell
+
+pub fn risk_matrix_level_name(RiskMatrixCell) -> String
+
+pub fn risk_matrix_table() -> Array[RiskMatrixCell]
+
+pub fn risk_score_from_signals(SignalSummary) -> Double
+
+pub fn robust_median(ArrayView[Double]) -> Double
+
+pub fn rolling_metric(Array[DailyRecord], Int, LoadWindow) -> Array[Double]
+
+pub fn rolling_risk_scores(Array[DailyRecord], RiskPolicy, Int) -> Array[Double]
+
+pub fn root_mean_square_error(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn rule_group_name(RuleGroup) -> String
+
+pub fn run_benchmark(Int, Int) -> BenchmarkResult
+
+pub fn run_csv_workflow(String, WorkflowConfig) -> WorkflowResult
+
+pub fn run_screening_protocol(Array[DailyRecord], WorkflowConfig, ScreeningProtocol) -> ProtocolResult
+
+pub fn run_workflow(Array[DailyRecord], WorkflowConfig) -> WorkflowResult
+
+pub fn safe_target_date(Array[DailyRecord], String?) -> String?
+
+pub fn scenario_catalog() -> Array[ScenarioDefinition]
+
+pub fn scenario_definition(ScenarioKind, Int) -> ScenarioDefinition
+
+pub fn scenario_kind_name(ScenarioKind) -> String
+
+pub fn scenario_matches_expectation(ScenarioKind, ComprehensiveAssessment?) -> Bool
+
+pub fn score_distance(ArrayView[Double], ArrayView[Double]) -> Double
+
+pub fn screen_athlete(AthleteSeries, RiskPolicy) -> AthleteScreening
+
+pub fn screen_cohort(Array[AthleteSeries], RiskPolicy) -> Array[AthleteScreening]
+
+pub fn screen_csv(String, String?) -> WorkflowResult
+
+pub fn session_count_on_date(Array[TrainingSession], String) -> Int
+
+pub fn session_density(Array[TrainingSession]) -> Double
+
+pub fn session_distance_density(Array[TrainingSession]) -> Double
+
+pub fn session_distance_total(Array[TrainingSession]) -> Double
+
+pub fn session_is_high_intensity(TrainingSession, Double) -> Bool
+
+pub fn session_is_valid(TrainingSession) -> Bool
+
+pub fn session_kind_name(SessionKind) -> String
+
+pub fn session_load(TrainingSession) -> Double
+
+pub fn session_load_gap(Array[DailyRecord], Array[TrainingSession]) -> Array[Double]
+
+pub fn session_load_share(Array[TrainingSession], SessionKind) -> Double
+
+pub fn session_loads(Array[TrainingSession]) -> Array[Double]
+
+pub fn session_to_text(TrainingSession) -> String
+
+pub fn sessions_by_kind(Array[TrainingSession], SessionKind) -> Array[TrainingSession]
+
+pub fn sessions_from_records(Array[DailyRecord], SessionKind) -> Array[TrainingSession]
+
+pub fn sessions_on_date(Array[TrainingSession], String) -> Array[TrainingSession]
+
+pub fn signal_ids(Array[RiskSignal]) -> Array[String]
+
+pub fn signal_kind_name(SignalKind) -> String
+
+pub fn signal_risk_matrix(RiskSignal) -> RiskMatrixCell
+
+pub fn signal_text(RiskSignal) -> String
+
+pub fn signal_weight(RiskSignal) -> Double
+
+pub fn signals_from_policy(Array[PolicyDecision]) -> Array[RiskSignal]
+
+pub fn signals_to_csv(Array[RiskSignal]) -> String
+
+pub fn sleep_compliance(Array[DailyRecord], Double) -> Double
+
+pub fn sleep_consistency(Array[DailyRecord]) -> Double
+
+pub fn sleep_debt(Array[DailyRecord], Double) -> Double
+
+pub fn sleep_score(Double, Double) -> Double
+
+pub fn sleep_surplus(Array[DailyRecord], Double) -> Double
+
+pub fn snapshot_csv(AthleteSnapshot) -> String
+
+pub fn snapshot_delta(AthleteSnapshot, AthleteSnapshot) -> SnapshotDelta
+
+pub fn snapshot_flags(AthleteSnapshot) -> Array[String]
+
+pub fn snapshot_from_assessment(String, ComprehensiveAssessment) -> AthleteSnapshot
+
+pub fn snapshot_text(AthleteSnapshot) -> String
+
+pub fn sort_records_by_date(Array[DailyRecord]) -> Array[DailyRecord]
+
+pub fn sort_screenings_by_risk(Array[AthleteScreening]) -> Array[AthleteScreening]
+
+pub fn source_summary(Array[DailyRecord], Array[DailyRecord]) -> String
+
+pub fn stable_readiness_streak(Array[ReadinessSnapshot], ReadinessBand) -> Int
+
+pub fn standard_deviation_values(ArrayView[Double]) -> Double
+
+pub fn store_is_continuous(TelemetryStore) -> Bool
+
+pub fn store_load_summary(TelemetryStore, Int) -> LoadSummary
+
+pub fn store_quality(TelemetryStore) -> QualityReport
+
+pub fn store_records(TelemetryStore) -> Array[DailyRecord]
+
+pub fn store_retained_dates(TelemetryStore) -> Array[String]
+
+pub fn store_revision(TelemetryStore) -> Int
+
+pub fn store_snapshot(TelemetryStore) -> String
+
+pub fn store_timeline(TelemetryStore) -> RiskTimeline
+
+pub fn strongest_action(Array[RecoveryAction]) -> RecoveryAction?
+
+pub fn summarize_cohort(Array[AthleteSeries], RiskPolicy) -> CohortSummary
+
+pub fn summarize_load(Array[DailyRecord], Int, Int, Int, Int) -> LoadSummary
+
+pub fn summarize_load_window(Array[DailyRecord], Int) -> LoadSummary
+
+pub fn summarize_pain(Array[DailyRecord], Double, Int) -> PainSummary
+
+pub fn summarize_readiness(Array[ReadinessSnapshot]) -> ReadinessSummary
+
+pub fn summarize_sessions(Array[TrainingSession], Double) -> SessionSummary
+
+pub fn summarize_signals(Array[RiskSignal]) -> SignalSummary
+
+pub fn summarize_trend(ArrayView[Double], Double, Int) -> TrendSummary
+
+pub fn summarize_workload_distribution(Array[DailyRecord], Double, Double) -> WorkloadDistribution
+
+pub fn threshold_breach_count(ArrayView[Double], Double, Bool) -> Int
+
+pub fn timeline_acwr_values(RiskTimeline) -> Array[Double]
+
+pub fn timeline_alert_dates(RiskTimeline, RiskLevel) -> Array[String]
+
+pub fn timeline_delta(RiskTimeline) -> AssessmentDelta?
+
+pub fn timeline_points_in_range(RiskTimeline, DateRange) -> Array[TimelinePoint]
+
+pub fn timeline_readiness_scores(RiskTimeline) -> Array[Double]
+
+pub fn timeline_risk_scores(RiskTimeline) -> Array[Double]
+
+pub fn timeline_text(RiskTimeline) -> String
+
+pub fn timeline_to_csv(RiskTimeline) -> String
+
+pub fn timeline_trend(RiskTimeline) -> TrendSummary
+
+pub fn total_load_values(ArrayView[Double]) -> Double
+
+pub fn total_session_duration(Array[TrainingSession]) -> Double
+
+pub fn total_session_load(Array[TrainingSession]) -> Double
+
+pub fn training_day_count(Array[DailyRecord]) -> Int
+
+pub fn training_loads(Array[DailyRecord]) -> Array[Double]
+
+pub fn training_target(String, Double, Double, SessionKind, Bool) -> TrainingTarget
+
+pub fn trend_direction_name(TrendDirection) -> String
+
+pub fn trend_points(ArrayView[Double]) -> Array[TrendPoint]
+
+pub fn trend_signal(Array[DailyRecord], Int) -> RiskSignal?
+
+pub fn trend_summary_text(TrendSummary) -> String
+
+pub fn triggered_policy_decisions(Array[PolicyDecision]) -> Array[PolicyDecision]
+
+pub fn trim_store_before(TelemetryStore, String) -> TelemetryStore
+
+pub fn turning_point_count(ArrayView[Double], Double) -> Int
+
+pub fn valid_date(DateParts) -> Bool
+
+pub fn validate_policy(RiskPolicy) -> PolicyValidation
+
+pub fn validate_record(DailyRecord, Int, QualityPolicy) -> Array[QualityIssue]
+
+pub fn validate_records(Array[DailyRecord], QualityPolicy) -> QualityReport
+
+pub fn variance_load_values(ArrayView[Double]) -> Double
+
+pub fn weighted_average(ArrayView[WeightedValue]) -> Double
+
+pub fn weighted_risk_level(Double) -> RiskLevel
+
+pub fn weighted_risk_score(ArrayView[PolicyDecision]) -> Double
+
+pub fn window_alert_count(Array[DailyRecord], RiskPolicy, Int) -> Array[Int]
+
+pub fn window_comparison_text(WindowComparison) -> String
+
+pub fn window_quality_scores(Array[DailyRecord], Int, QualityPolicy) -> Array[Double]
+
+pub fn workflow_is_accepted(WorkflowResult) -> Bool
+
+pub fn workflow_records(Array[DailyRecord], WorkflowConfig) -> Array[DailyRecord]
+
+pub fn workflow_report_text(WorkflowResult) -> String
+
+pub fn workflow_stage_status(WorkflowResult) -> Array[String]
+
+pub fn workload_distribution_text(WorkloadDistribution) -> String
+
+pub fn workload_monotony(ArrayView[Double]) -> Double
+
+pub fn workload_percentile(ArrayView[Double], Double) -> Double
+
+pub fn workload_ramp_rate(Array[DailyRecord], Int, Int, Int) -> Double
+
+pub fn workload_strain(ArrayView[Double]) -> Double
 
 // Errors
 
 // Types and methods
+pub(all) struct ActionPlan {
+  focus : String
+  rest_days : Int
+  load_change_percent : Double
+  recommendations : Array[Recommendation]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AdherenceReport {
+  target_count : Int
+  met_count : Int
+  partial_count : Int
+  missed_count : Int
+  not_recorded_count : Int
+  adherence_percent : Double
+  rows : Array[AdherenceRow]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AdherenceRow {
+  date : String
+  status : AdherenceStatus
+  target_load : Double
+  actual_load : Double
+  load_difference_percent : Double
+  recovery_ok : Bool
+  explanation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum AdherenceStatus {
+  Met
+  Partial
+  Missed
+  NotRecorded
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AssessmentDelta {
+  risk_score_change : Double
+  readiness_score_change : Double
+  load_change_percent : Double
+  recovery_change : Double
+  direction : TrendDirection
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AthleteProfile {
+  athlete_id : String
+  display_name : String
+  target_sleep_hours : Double
+  preferred_max_intensity : Double
+  pain_review_threshold : Double
+  fatigue_review_threshold : Double
+  policy : RiskPolicy
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AthleteScreening {
+  athlete_id : String
+  assessment : ComprehensiveAssessment?
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  data_quality_score : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AthleteSeries {
+  athlete_id : String
+  records : Array[DailyRecord]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AthleteSnapshot {
+  athlete_id : String
+  date : String
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  acwr : Double
+  sleep_hours : Double
+  fatigue : Double
+  pain : Double
+  data_quality : Double
+  alert_count : Int
+  action : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct AuditEntry {
+  stage : String
+  status : String
+  detail : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct BatchReport {
+  start_date : String
+  end_date : String
+  row_count : Int
+  high_risk_rows : Int
+  average_risk : Double
+  average_readiness : Double
+  average_load : Double
+  average_recovery : Double
+  rows : Array[BatchRow]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct BatchRow {
+  date : String
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  load : Double
+  acwr : Double
+  recovery : Double
+  quality : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct BenchmarkResult {
+  iterations : Int
+  record_count : Int
+  assessments : Int
+  high_risk_assessments : Int
+  checksum : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct CohortDelta {
+  risk_rate_change : Double
+  readiness_change : Double
+  quality_change : Double
+  improved_athletes : Int
+  worsened_athletes : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct CohortSummary {
+  athlete_count : Int
+  screened_count : Int
+  high_risk_count : Int
+  medium_risk_count : Int
+  low_risk_count : Int
+  high_risk_rate : Double
+  average_risk_score : Double
+  average_readiness : Double
+  average_acwr : Double
+  average_quality : Double
+  screenings : Array[AthleteScreening]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ComprehensiveAssessment {
+  date : String
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  load : LoadSummary
+  recovery : RecoverySummary
+  quality : QualityReport
+  signals : SignalSummary
+  action_plan : ActionPlan
+  summary : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ContractCheck {
+  name : String
+  passed : Bool
+  observed : String
+  expected : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ContractReport {
+  passed : Bool
+  checks : Array[ContractCheck]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct CsvParseIssue {
+  line : Int
+  field : String
+  message : String
+  raw : String
+} derive(Eq, ToJson, @debug.Debug)
+
 pub(all) struct DailyRecord {
   date : String
   training_duration : Double
@@ -48,6 +1108,119 @@ pub(all) struct DailyRecord {
   sleep_hours : Double
   sleep_quality : Double
   fatigue : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct DashboardRange {
+  start_date : String
+  end_date : String
+  high_risk_days : Int
+  average_risk_score : Double
+  average_readiness : Double
+  average_acwr : Double
+  average_quality : Double
+  status : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct DashboardSnapshot {
+  date : String
+  status : String
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  acwr : Double
+  load_trend : LoadTrend
+  recovery_band : RecoveryBand
+  pain_level : Double
+  quality_score : Double
+  active_alerts : Int
+  primary_action : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum DateOrder {
+  Before
+  Same
+  After
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct DateParts {
+  year : Int
+  month : Int
+  day : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct DateRange {
+  start : DateParts
+  end : DateParts
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct DecisionRecord {
+  decision : TrainingDecision
+  allowed_load_change : Double
+  confidence : Double
+  reason : String
+  next_review_days : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct Explanation {
+  topic : String
+  headline : String
+  evidence : Array[String]
+  caveats : Array[String]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ForecastBand {
+  Safe
+  Caution
+  Unsafe
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ForecastPoint {
+  day_offset : Int
+  projected_load : Double
+  projected_recovery : Double
+  projected_acwr : Double
+  band : ForecastBand
+  rationale : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct LoadBand {
+  lower : Double
+  upper : Double
+  count : Int
+  total_load : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct LoadSummary {
+  sample_count : Int
+  training_days : Int
+  rest_days : Int
+  total_load : Double
+  average_load : Double
+  minimum_load : Double
+  maximum_load : Double
+  standard_deviation : Double
+  coefficient_of_variation : Double
+  monotony : Double
+  strain : Double
+  acute_load : Double
+  chronic_load : Double
+  acwr : Double
+  ramp_rate : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum LoadTrend {
+  Rising
+  Stable
+  Falling
+  Volatile
+  InsufficientData
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum LoadWindow {
+  Sum
+  Average
+  ExponentiallyWeighted(decay~ : Double)
 } derive(Eq, ToJson, @debug.Debug)
 
 pub(all) enum Metric {
@@ -61,10 +1234,370 @@ pub(all) enum Metric {
   LoadSpike
 } derive(Eq, ToJson, @debug.Debug)
 
+pub(all) struct MetricDescription {
+  metric : Metric
+  name : String
+  unit : String
+  direction : String
+  default_window : Int
+  explanation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct MicrocycleDay {
+  date : String
+  target_load : Double
+  target_intensity : Double
+  kind : SessionKind
+  is_rest : Bool
+  rationale : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct MicrocyclePlan {
+  name : String
+  start_date : String
+  days : Array[MicrocycleDay]
+  total_target_load : Double
+  maximum_target_load : Double
+  rest_day_count : Int
+  guardrail : ProgressionGuardrail
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct MicrocycleReview {
+  target_load : Double
+  actual_load : Double
+  adherence_percent : Double
+  rest_days_planned : Int
+  rest_days_observed : Int
+  risk_note : String
+} derive(Eq, ToJson, @debug.Debug)
+
 pub(all) enum Operator {
   GreaterThan
   LessThan
   EqualTo
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PainEpisode {
+  date : String
+  level : Double
+  site : String
+  persistent_days : Int
+  escalating : Bool
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PainSummary {
+  observed_days : Int
+  painful_days : Int
+  maximum_level : Double
+  average_level : Double
+  burden : Double
+  persistent_sites : Array[String]
+  latest_episode : PainEpisode?
+  escalation : Bool
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PeriodComparison {
+  first_period_load : Double
+  second_period_load : Double
+  load_change_percent : Double
+  first_recovery : Double
+  second_recovery : Double
+  recovery_change : Double
+  first_readiness : Double
+  second_readiness : Double
+  readiness_change : Double
+  conclusion : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PipelineAudit {
+  passed : Bool
+  entries : Array[AuditEntry]
+  input_count : Int
+  output_count : Int
+  warning_count : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum PlanPhase {
+  Base
+  Build
+  Peak
+  Deload
+  Recovery
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PlanReview {
+  plan_name : String
+  expected_load : Double
+  actual_load : Double
+  variance_percent : Double
+  rest_compliance : Double
+  risk_level : RiskLevel
+  recommendation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PlannedDay {
+  date : String
+  phase : PlanPhase
+  target_load : Double
+  target_intensity : Double
+  rest : Bool
+  rationale : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PolicyCatalogEntry {
+  rule : PolicyRule
+  group : RuleGroup
+  enabled : Bool
+  rationale : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PolicyDecision {
+  rule_id : String
+  rule_name : String
+  metric : Metric
+  triggered : Bool
+  actual_value : Double
+  threshold : Double
+  severity : RiskLevel
+  weight : Double
+  message : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PolicyRule {
+  id : String
+  name : String
+  metric : Metric
+  operator : Operator
+  threshold : Double
+  window_size : Int
+  severity : RiskLevel
+  weight : Double
+  recommendation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct PolicyValidation {
+  valid : Bool
+  errors : Array[String]
+  warnings : Array[String]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ProfileEvaluation {
+  profile : AthleteProfile
+  assessment : ComprehensiveAssessment?
+  adjusted_readiness : Double
+  personalized_action : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ProgressionGuardrail {
+  maximum_increase_percent : Double
+  projected_acwr : Double
+  allowed : Bool
+  reason : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ProjectSnapshot {
+  status : String
+  health_line : String
+  record_count : Int
+  source_record_count : Int
+  actionable : Bool
+  recommended_change : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ProtocolResult {
+  accepted : Bool
+  protocol : ScreeningProtocol
+  workflow : WorkflowResult
+  steps : Array[ProtocolStep]
+  reason : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ProtocolStage {
+  Ingest
+  Validate
+  Calculate
+  Screen
+  Recommend
+  Export
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ProtocolStep {
+  stage : ProtocolStage
+  name : String
+  required : Bool
+  completed : Bool
+  detail : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct QualityIssue {
+  kind : QualityIssueKind
+  index : Int
+  date : String
+  field : String
+  message : String
+  blocking : Bool
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum QualityIssueKind {
+  InvalidDate
+  DuplicateDate
+  NegativeValue
+  OutOfRange
+  MissingDate
+  UnorderedDate
+  EmptyRecordSet
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct QualityPolicy {
+  require_iso_date : Bool
+  require_non_negative_load : Bool
+  maximum_intensity : Double
+  maximum_pain : Double
+  maximum_sleep_hours : Double
+  maximum_sleep_quality : Double
+  maximum_fatigue : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct QualityReport {
+  record_count : Int
+  valid_record_count : Int
+  issue_count : Int
+  blocking_issue_count : Int
+  missing_date_count : Int
+  duplicate_date_count : Int
+  score : Double
+  issues : Array[QualityIssue]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct QuickMetrics {
+  record_count : Int
+  total_load : Double
+  average_load : Double
+  average_sleep : Double
+  maximum_pain : Double
+  average_fatigue : Double
+  quality_score : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ReadinessBand {
+  Green
+  Amber
+  Red
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ReadinessComponent {
+  kind : ReadinessComponentKind
+  score : Double
+  weight : Double
+  evidence : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ReadinessComponentKind {
+  Sleep
+  Fatigue
+  Pain
+  Load
+  Consistency
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ReadinessSnapshot {
+  date : String
+  score : Double
+  band : ReadinessBand
+  components : Array[ReadinessComponent]
+  suggestion : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ReadinessSummary {
+  average_score : Double
+  minimum_score : Double
+  maximum_score : Double
+  green_days : Int
+  amber_days : Int
+  red_days : Int
+  trend : TrendSummary
+  latest : ReadinessSnapshot?
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct Recommendation {
+  id : String
+  priority : RecommendationPriority
+  title : String
+  rationale : String
+  action : String
+  expected_effect : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum RecommendationPriority {
+  Immediate
+  Soon
+  Monitor
+  Positive
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RecoveryAction {
+  kind : RecoveryActionKind
+  title : String
+  priority : RecommendationPriority
+  duration_days : Int
+  load_change_percent : Double
+  reason : String
+  completion_check : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum RecoveryActionKind {
+  Rest
+  Sleep
+  Hydration
+  Mobility
+  LoadReduction
+  ClinicalReview
+  DataRepair
+  Continue
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum RecoveryBand {
+  Restored
+  Ready
+  Caution
+  Depleted
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RecoverySummary {
+  sample_count : Int
+  average_sleep_hours : Double
+  sleep_debt_hours : Double
+  sleep_consistency : Double
+  average_sleep_quality : Double
+  average_fatigue : Double
+  maximum_fatigue : Double
+  average_pain : Double
+  maximum_pain : Double
+  recovery_score : Double
+  training_readiness : Double
+  depleted_days : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RecoveryWeights {
+  sleep_hours : Double
+  sleep_quality : Double
+  fatigue : Double
+  pain : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ReportFormat {
+  PlainText
+  Csv
+  JsonLines
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ReportOptions {
+  format : ReportFormat
+  include_clear_rules : Bool
+  include_recommendations : Bool
+  include_quality : Bool
 } derive(Eq, ToJson, @debug.Debug)
 
 pub(all) struct RiskAssessment {
@@ -81,6 +1614,53 @@ pub(all) enum RiskLevel {
 } derive(Eq, ToJson, @debug.Debug)
 pub fn RiskLevel::max(Self, Self) -> Self
 
+pub(all) struct RiskMatrixCell {
+  likelihood : Int
+  consequence : Int
+  score : Int
+  level : RiskLevel
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RiskPolicy {
+  name : String
+  acute_window : Int
+  chronic_window : Int
+  baseline_window : Int
+  high_acwr : Double
+  medium_acwr : Double
+  sleep_target : Double
+  recovery_weights : RecoveryWeights
+  rules : Array[PolicyRule]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RiskReport {
+  title : String
+  generated_for : String
+  body : String
+  format : ReportFormat
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RiskSignal {
+  id : String
+  kind : SignalKind
+  title : String
+  value : Double
+  threshold : Double
+  severity : RiskLevel
+  confidence : Double
+  evidence : String
+  action : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct RiskTimeline {
+  points : Array[TimelinePoint]
+  high_risk_days : Int
+  medium_risk_days : Int
+  improving_days : Int
+  worsening_days : Int
+  latest : TimelinePoint?
+} derive(Eq, ToJson, @debug.Debug)
+
 pub(all) struct Rule {
   name : String
   metric : Metric
@@ -91,6 +1671,13 @@ pub(all) struct Rule {
   description : String
 } derive(Eq, ToJson, @debug.Debug)
 
+pub(all) enum RuleGroup {
+  LoadRules
+  RecoveryRules
+  SymptomRules
+  DataRules
+} derive(Eq, ToJson, @debug.Debug)
+
 pub(all) struct RuleResult {
   rule : Rule
   triggered : Bool
@@ -98,7 +1685,265 @@ pub(all) struct RuleResult {
   explanation : String
 } derive(Eq, ToJson, @debug.Debug)
 
+pub(all) struct ScenarioDefinition {
+  id : String
+  name : String
+  description : String
+  expected_risk : RiskLevel
+  expected_focus : String
+  days : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ScenarioKind {
+  Balanced
+  WorkloadSpike
+  SleepDeprivation
+  PainEscalation
+  RapidProgression
+  MissingHistory
+  IrregularTelemetry
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ScreeningProtocol {
+  name : String
+  version : String
+  steps : Array[ProtocolStep]
+  minimum_history : Int
+  minimum_quality : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum SessionKind {
+  Endurance
+  Strength
+  Speed
+  Skills
+  Competition
+  Recovery
+  Mixed
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct SessionSummary {
+  session_count : Int
+  total_duration_minutes : Double
+  total_load : Double
+  average_intensity : Double
+  high_intensity_count : Int
+  recovery_session_count : Int
+  endurance_load : Double
+  strength_load : Double
+  competition_load : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum SignalKind {
+  Workload
+  Recovery
+  Sleep
+  Pain
+  Fatigue
+  LoadSpike
+  Monotony
+  Trend
+  DataQuality
+  MissingHistory
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct SignalSummary {
+  signal_count : Int
+  high_count : Int
+  medium_count : Int
+  low_count : Int
+  weighted_score : Double
+  highest_risk : RiskLevel
+  signals : Array[RiskSignal]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct SnapshotDelta {
+  risk_change : Double
+  readiness_change : Double
+  acwr_change : Double
+  sleep_change : Double
+  fatigue_change : Double
+  pain_change : Double
+  status : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct StoreUpdate {
+  accepted : Bool
+  revision : Int
+  issues : Array[QualityIssue]
+  record_count : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TelemetryCsvResult {
+  records : Array[DailyRecord]
+  issues : Array[CsvParseIssue]
+  header_detected : Bool
+  line_count : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TelemetryStore {
+  records : Array[DailyRecord]
+  revision : Int
+  policy : QualityPolicy
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TimelinePoint {
+  date : String
+  risk_level : RiskLevel
+  risk_score : Double
+  readiness_score : Double
+  acute_load : Double
+  chronic_load : Double
+  acwr : Double
+  recovery_score : Double
+  quality_score : Double
+  signal_count : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrainingAnalysis {
+  load : LoadSummary
+  recovery : RecoverySummary
+  pain : PainSummary
+  readiness : ReadinessSummary
+  quality : QualityReport
+  overtraining_index : Double
+  load_recovery_ratio : Double
+  risk_note : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum TrainingDecision {
+  Progress
+  Maintain
+  Reduce
+  Rest
+  Refer
+  CollectData
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrainingForecast {
+  horizon_days : Int
+  baseline_load : Double
+  proposed_change_percent : Double
+  points : Array[ForecastPoint]
+  maximum_acwr : Double
+  minimum_recovery : Double
+  recommendation : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrainingPlan {
+  name : String
+  start_date : String
+  phase : PlanPhase
+  days : Array[PlannedDay]
+  target_total_load : Double
+  max_target_load : Double
+  risk_guardrail : ProgressionGuardrail
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrainingSession {
+  id : String
+  date : String
+  duration_minutes : Double
+  intensity : Double
+  kind : SessionKind
+  distance_km : Double?
+  notes : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrainingTarget {
+  date : String
+  target_duration : Double
+  target_intensity : Double
+  target_kind : SessionKind
+  require_rest : Bool
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum TrendDirection {
+  Improving
+  Worsening
+  Stable
+  Oscillating
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrendPoint {
+  index : Int
+  value : Double
+  delta : Double
+  percent_change : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TrendSummary {
+  sample_count : Int
+  first_value : Double
+  last_value : Double
+  minimum : Double
+  maximum : Double
+  mean : Double
+  slope : Double
+  intercept : Double
+  r_squared : Double
+  percent_change : Double
+  direction : TrendDirection
+  turning_points : Int
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct WeightedValue {
+  value : Double
+  weight : Double
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct WindowComparison {
+  recent_days : Int
+  baseline_days : Int
+  recent_load : Double
+  baseline_load : Double
+  load_change_percent : Double
+  recent_sleep : Double
+  baseline_sleep : Double
+  sleep_change : Double
+  recent_fatigue : Double
+  baseline_fatigue : Double
+  fatigue_change : Double
+  direction : TrendDirection
+  conclusion : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct WorkflowConfig {
+  policy : RiskPolicy
+  report_options : ReportOptions
+  quality_policy : QualityPolicy
+  target_sleep : Double
+  target_date : String?
+  fill_missing_dates : Bool
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct WorkflowResult {
+  accepted : Bool
+  input : TelemetryCsvResult?
+  records : Array[DailyRecord]
+  quality : QualityReport
+  assessment : ComprehensiveAssessment?
+  report : RiskReport?
+  timeline : RiskTimeline?
+  audit : Array[String]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct WorkloadDistribution {
+  total_load : Double
+  low_intensity_load : Double
+  moderate_intensity_load : Double
+  high_intensity_load : Double
+  low_share : Double
+  moderate_share : Double
+  high_share : Double
+  hard_easy_ratio : Double
+  session_density : Double
+  training_days : Int
+  rest_days : Int
+} derive(Eq, ToJson, @debug.Debug)
+
 // Type aliases
 
 // Traits
-
