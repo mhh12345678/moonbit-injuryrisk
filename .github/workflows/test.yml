@@ -83,7 +83,7 @@ jobs:
             Where-Object { $_.FullName -notmatch '\\(_build|\.mooncakes|\.repos)\\' -and $_.Name -notmatch '(_test|_wbtest)\.mbt$' }
           $lines = ($files | Get-Content | Measure-Object -Line).Lines
           Write-Host "Production MoonBit source lines: $lines"
-          if ($lines -lt 8000) { throw "Production source size is below 8000 lines" }
+          if ($lines -lt 20000) { throw "Production source size is below 20000 lines" }
 
       - name: Ensure generated files are committed
         run: git diff --exit-code

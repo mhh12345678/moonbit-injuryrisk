@@ -27,13 +27,13 @@ above, so it includes the process invocation and cached release-build check.
 
 | Run | Wall time |
 | ---: | ---: |
-| 1 | 401.24 ms |
-| 2 | 381.28 ms |
-| 3 | 389.06 ms |
-| 4 | 401.56 ms |
-| 5 | 457.48 ms |
-| Median | 401.24 ms |
-| Mean | 406.12 ms |
+| 1 | 382.70 ms |
+| 2 | 379.08 ms |
+| 3 | 397.12 ms |
+| 4 | 379.13 ms |
+| 5 | 374.89 ms |
+| Median | 379.13 ms |
+| Mean | 382.58 ms |
 
 The values are intended for regression comparison on the same or a similar
 machine. They are not a claim about clinical accuracy or a universal hardware
@@ -41,6 +41,6 @@ throughput limit.
 
 ## Test Snapshot
 
-On the same date and toolchain, the native suite passed 22 of 22 test groups.
-The coverage report recorded 1,904 covered lines out of 3,821 instrumented
-MoonBit lines (49.83%).
+On the same date and toolchain, the native suite passed 28 of 28 tests.
+The coverage report recorded 3,740 covered lines out of 18,337 instrumented
+MoonBit lines (20.40%).

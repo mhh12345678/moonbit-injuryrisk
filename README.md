@@ -13,7 +13,8 @@ The library is designed for daily training telemetry, coaching dashboards, rehab
 - Explainable rules: configurable metrics, operators, thresholds, severity, weights, evidence, and recommendations.
 - Data quality: ISO date validation, range checks, duplicate and missing-date detection, chronological normalization, gap filling, and contract checks.
 - Application workflows: CSV telemetry ingestion, in-memory store, daily timeline, cohort screening, training-plan review, progression guardrails, and deterministic benchmark harness.
-- Outputs: plain-text reports, CSV exports, dashboard snapshots, action plans, and machine-readable derived data.
+- Operational delivery: decision runs, audit trails, evidence matrices, data-governance reports, review queues, service contracts, acceptance packets, and multi-run scorecards.
+- Outputs: plain-text reports, CSV exports, dashboard snapshots, action plans, acceptance manifests, and machine-readable derived data.
 
 ## Quick Start
 
@@ -73,6 +74,12 @@ lib/cohort.mbt            batch athlete screening
 lib/telemetry_csv.mbt     CSV ingestion and parse diagnostics
 lib/reports.mbt           text and CSV rendering
 lib/workflow.mbt          end-to-end ingest-to-report workflow
+lib/decision_pipeline.mbt auditable decision orchestration
+lib/data_governance.mbt   data quality, lineage, and retention checks
+lib/evidence_matrix.mbt   signal-to-action evidence records
+lib/service_contracts.mbt request/response validation boundary
+lib/acceptance_packets.mbt release-ready operational packet
+lib/operational_scorecards.mbt multi-run review and pagination views
 cmd/main                  scenario CLI
 cmd/bench                 deterministic native benchmark
 ```
@@ -97,7 +104,7 @@ Measured output and environment details are recorded in [BENCHMARKS.md](BENCHMAR
 
 ## Source Scale
 
-The CI source-size check counts production `.mbt` lines, excludes files ending in `_test.mbt` or `_wbtest.mbt`, and excludes `_build`, `.mooncakes`, and `.repos`. The enforced minimum is 8,000 lines. This rule is intentionally visible and reproducible; tests and generated build output are never used to satisfy it.
+The CI source-size check counts production `.mbt` lines, excludes files ending in `_test.mbt` or `_wbtest.mbt`, and excludes `_build`, `.mooncakes`, and `.repos`. The enforced minimum is 20,000 lines. This rule is intentionally visible and reproducible; tests and generated build output are never used to satisfy it.
 
 ## Tests
 
@@ -106,7 +113,8 @@ The test suite covers:
 - empty and short windows, zero baselines, equal thresholds, and out-of-range indices;
 - leap years, invalid dates, cross-month and cross-year arithmetic;
 - duplicates, missing dates, unordered records, invalid scales, and CSV parse failures;
-- policy decisions, high/medium/low risk paths, readiness, pain escalation, timelines, cohorts, stores, plans, and contracts.
+- policy decisions, high/medium/low risk paths, readiness, pain escalation, timelines, cohorts, stores, plans, and contracts;
+- empty and malformed acceptance packets, governance blocking, evidence resolution, service contracts, scorecard deltas, and pagination boundaries.
 
 Run all tests with:
 
