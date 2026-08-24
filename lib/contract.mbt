@@ -107,7 +107,7 @@ pub fn check_assessment_contract(
 
 ///|
 pub fn contract_report_text(report : ContractReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("passed=" + report.passed.to_string())
   for check in report.checks {
     builder.write_string(

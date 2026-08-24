@@ -434,7 +434,7 @@ pub fn scenario_day_csv(result : ScenarioResult, day : ScenarioDay) -> String {
 
 ///|
 pub fn scenario_results_csv(results : Array[ScenarioResult]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(scenario_day_csv_header())
   for result in results {
     for day in result.days {

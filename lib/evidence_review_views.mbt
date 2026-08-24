@@ -317,7 +317,7 @@ pub fn evidence_review_card_text(card : EvidenceReviewCard) -> String {
 
 ///|
 pub fn evidence_review_text(review : EvidenceReview) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date=" +
     review.date +
@@ -371,7 +371,7 @@ pub fn evidence_review_card_csv(card : EvidenceReviewCard) -> String {
 
 ///|
 pub fn evidence_review_csv(review : EvidenceReview) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(evidence_review_card_csv_header())
   for card in review.cards {
     builder.write_string("\n" + evidence_review_card_csv(card))

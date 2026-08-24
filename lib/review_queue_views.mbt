@@ -402,7 +402,7 @@ pub fn review_queue_row_text(row : ReviewQueueRow) -> String {
 
 ///|
 pub fn review_queue_text(view : ReviewQueueView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     view.status +
@@ -456,7 +456,7 @@ pub fn review_queue_row_csv(row : ReviewQueueRow) -> String {
 
 ///|
 pub fn review_queue_csv(view : ReviewQueueView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(review_queue_csv_header())
   for row in view.rows {
     builder.write_string("\n" + review_queue_row_csv(row))

@@ -305,7 +305,7 @@ pub fn segment_csv(segment : RiskSegment) -> String {
 
 ///|
 pub fn segment_summary_csv(summary : SegmentSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(segment_csv_header())
   for segment in summary.segments {
     builder.write_string("\n")

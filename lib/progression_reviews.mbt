@@ -332,7 +332,7 @@ pub fn progression_review_text(review : ProgressionReview) -> String {
 
 ///|
 pub fn progression_history_text(history : ProgressionHistory) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     history.status +
@@ -383,7 +383,7 @@ pub fn progression_review_csv(review : ProgressionReview) -> String {
 
 ///|
 pub fn progression_history_csv(history : ProgressionHistory) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(progression_review_csv_header())
   for review in history.reviews {
     builder.write_string("\n")

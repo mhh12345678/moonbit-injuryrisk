@@ -769,7 +769,7 @@ pub fn decision_history_entry_csv(entry : DecisionHistoryEntry) -> String {
 
 ///|
 pub fn decision_history_csv(history : DecisionHistory) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(decision_history_entry_csv_header())
   for entry in history.entries {
     builder.write_string("\n" + decision_history_entry_csv(entry))
@@ -799,7 +799,7 @@ pub fn decision_history_entry_text(entry : DecisionHistoryEntry) -> String {
 
 ///|
 pub fn decision_history_text(history : DecisionHistory) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "runs=" +
     history.entries.length().to_string() +

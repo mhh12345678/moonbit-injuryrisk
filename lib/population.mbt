@@ -538,7 +538,7 @@ pub fn population_row_csv(row : PopulationRow) -> String {
 
 ///|
 pub fn population_rows_csv(rows : Array[PopulationRow]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(population_row_csv_header())
   for row in rows {
     builder.write_string("\n")

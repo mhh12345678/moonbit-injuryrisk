@@ -158,7 +158,7 @@ pub fn policy_intersection(left : RiskPolicy, right : RiskPolicy) -> RiskPolicy 
 ///|
 pub fn policy_explanation(policy : RiskPolicy) -> String {
   let catalog = policy_catalog(policy)
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(policy.name)
   builder.write_string(" rules=")
   builder.write_string(catalog.length().to_string())

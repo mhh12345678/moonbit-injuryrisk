@@ -462,7 +462,7 @@ pub fn run_manifest_check_text(check : RunManifestCheck) -> String {
 
 ///|
 pub fn run_manifest_report_text(report : RunManifestReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     report.status +

@@ -21,20 +21,20 @@ iterations=100 records=120 assessments=100 high_risk=100 checksum=9326.412481083
 ## Local Measurement
 
 Measured on Windows in the local development environment on 2026-08-24 with
-MoonBit stable `0.1.20260819`, Moonc `0.10.9`, and a warm native release
+MoonBit stable `0.1.20260824`, Moonc `0.10.10`, and a warm native release
 executable. The release executable was built once with `moon build`; the five
 measurements below used PowerShell `Measure-Command` around the executable and
 were taken after one warm-up run.
 
 | Run | Wall time |
 | ---: | ---: |
-| 1 | 669.66 ms |
-| 2 | 827.19 ms |
-| 3 | 651.13 ms |
-| 4 | 574.09 ms |
-| 5 | 693.66 ms |
-| Median | 669.66 ms |
-| Mean | 683.15 ms |
+| 1 | 248.78 ms |
+| 2 | 237.40 ms |
+| 3 | 249.48 ms |
+| 4 | 233.23 ms |
+| 5 | 217.93 ms |
+| Median | 237.40 ms |
+| Mean | 237.36 ms |
 
 The values are intended for regression comparison on the same or a similar
 machine. They are not a claim about clinical accuracy or a universal hardware

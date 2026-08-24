@@ -160,7 +160,7 @@ pub fn timeline_delta(timeline : RiskTimeline) -> AssessmentDelta? {
 
 ///|
 pub fn timeline_text(timeline : RiskTimeline) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("points=")
   builder.write_string(timeline.points.length().to_string())
   builder.write_string(" high=")

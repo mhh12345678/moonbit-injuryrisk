@@ -263,7 +263,7 @@ pub fn forecast_review_csv(review : ForecastReview) -> String {
 
 ///|
 pub fn forecast_reviews_csv(summary : ForecastReviewSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(forecast_review_csv_header())
   for review in summary.reviews {
     builder.write_string("\n")

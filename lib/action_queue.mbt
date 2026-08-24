@@ -273,7 +273,7 @@ pub fn queue_category_names(queue : ActionQueue) -> Array[String] {
 
 ///|
 pub fn action_queue_text(queue : ActionQueue) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     queue.status +
@@ -333,7 +333,7 @@ pub fn action_queue_csv(item : ActionQueueItem) -> String {
 
 ///|
 pub fn action_queue_csv_text(queue : ActionQueue) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(action_queue_csv_header())
   for item in queue.items {
     builder.write_string("\n")

@@ -366,7 +366,7 @@ pub fn event_timeline_valid(timeline : EventTimeline) -> Bool {
 
 ///|
 pub fn event_timeline_text(timeline : EventTimeline) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     timeline.status +
@@ -451,7 +451,7 @@ pub fn event_timeline_point_csv(point : EventTimelinePoint) -> String {
 
 ///|
 pub fn event_timeline_csv(timeline : EventTimeline) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(event_timeline_csv_header())
   for point in timeline.points {
     builder.write_string("\n" + event_timeline_point_csv(point))

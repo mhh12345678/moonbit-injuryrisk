@@ -451,7 +451,7 @@ pub fn policy_review_card_text(card : PolicyReviewCard) -> String {
 
 ///|
 pub fn policy_review_text(view : PolicyReviewView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "policy=" +
     view.policy_name +
@@ -495,7 +495,7 @@ pub fn policy_review_card_csv(card : PolicyReviewCard) -> String {
 
 ///|
 pub fn policy_review_csv(view : PolicyReviewView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(policy_review_card_csv_header())
   for card in view.cards {
     builder.write_string("\n" + policy_review_card_csv(card))

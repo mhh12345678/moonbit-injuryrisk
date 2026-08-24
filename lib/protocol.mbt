@@ -142,7 +142,7 @@ pub fn run_screening_protocol(
 
 ///|
 pub fn protocol_text(result : ProtocolResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     result.protocol.name +
     " v" +

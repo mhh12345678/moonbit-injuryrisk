@@ -397,7 +397,7 @@ pub fn date_order_issues(records : Array[DailyRecord]) -> Array[QualityIssue] {
 
 ///|
 pub fn quality_report_text(report : QualityReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("quality=")
   builder.write_string(quality_band(report.score))
   builder.write_string(" score=")

@@ -511,7 +511,7 @@ pub fn return_plan_reason_codes(plan : ReturnPlan) -> Array[String] {
 
 ///|
 pub fn return_plan_text(plan : ReturnPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "athlete=" +
     plan.athlete_label +
@@ -575,7 +575,7 @@ pub fn return_observation_csv(observation : ReturnObservation) -> String {
 
 ///|
 pub fn return_plan_csv(plan : ReturnPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(return_observation_csv_header())
   for observation in plan.observations {
     builder.write_string("\n")

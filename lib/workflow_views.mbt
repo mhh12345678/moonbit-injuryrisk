@@ -276,7 +276,7 @@ pub fn workflow_trend_csv_header() -> String {
 
 ///|
 pub fn workflow_trend_csv(view : WorkflowTrendView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(workflow_trend_csv_header())
   for index in 0..<view.dates.length() {
     let action = view.action_dates.contains(view.dates[index])

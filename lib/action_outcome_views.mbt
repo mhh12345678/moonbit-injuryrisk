@@ -393,7 +393,7 @@ pub fn action_outcome_row_text(row : ActionOutcomeView) -> String {
 
 ///|
 pub fn action_outcome_text(summary : ActionOutcomeSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     summary.status +
@@ -453,7 +453,7 @@ pub fn action_outcome_csv(row : ActionOutcomeView) -> String {
 
 ///|
 pub fn action_outcome_summary_csv(summary : ActionOutcomeSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(action_outcome_csv_header())
   for row in summary.rows {
     builder.write_string("\n" + action_outcome_csv(row))

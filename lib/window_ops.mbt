@@ -253,7 +253,7 @@ pub fn window_slice_csv(slice : WindowSlice) -> String {
 
 ///|
 pub fn windows_csv(windows : Array[WindowSlice]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(window_slice_csv_header())
   for window in windows {
     builder.write_string("\n")

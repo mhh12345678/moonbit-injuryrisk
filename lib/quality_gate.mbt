@@ -261,7 +261,7 @@ pub fn quality_gate_summary(result : QualityGateResult) -> String {
 
 ///|
 pub fn quality_gate_text(result : QualityGateResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(quality_gate_summary(result))
   for check in result.checks {
     builder.write_string(
@@ -298,7 +298,7 @@ pub fn quality_gate_check_csv(check : QualityGateCheck) -> String {
 
 ///|
 pub fn quality_gate_csv(result : QualityGateResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(quality_gate_csv_header())
   for check in result.checks {
     builder.write_string("\n")

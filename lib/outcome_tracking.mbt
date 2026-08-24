@@ -228,7 +228,7 @@ pub fn outcome_observation_text(observation : OutcomeObservation) -> String {
 
 ///|
 pub fn outcome_report_text(report : OutcomeReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     report.status +
@@ -277,7 +277,7 @@ pub fn outcome_observation_csv(observation : OutcomeObservation) -> String {
 
 ///|
 pub fn outcome_report_csv(report : OutcomeReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(outcome_observation_csv_header())
   for observation in report.observations {
     builder.write_string("\n")

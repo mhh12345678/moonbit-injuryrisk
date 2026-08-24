@@ -86,7 +86,7 @@ pub fn audit_records(
 
 ///|
 pub fn audit_text(audit : PipelineAudit) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "passed=" +
     audit.passed.to_string() +

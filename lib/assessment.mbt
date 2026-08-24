@@ -287,7 +287,7 @@ pub fn assessment_delta(
 
 ///|
 pub fn assessment_text(assessment : ComprehensiveAssessment) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(assessment.summary)
   builder.write_string("\nfocus: ")
   builder.write_string(assessment.action_plan.focus)

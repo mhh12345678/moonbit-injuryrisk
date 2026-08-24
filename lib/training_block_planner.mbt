@@ -288,7 +288,7 @@ pub fn block_plan_next_action(plan : BlockPlan) -> String {
 
 ///|
 pub fn block_plan_text(plan : BlockPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "name=" +
     plan.name +
@@ -350,7 +350,7 @@ pub fn block_plan_day_csv(day : BlockPlanDay) -> String {
 
 ///|
 pub fn block_plan_csv(plan : BlockPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(block_plan_csv_header())
   for day in plan.days {
     builder.write_string("\n")

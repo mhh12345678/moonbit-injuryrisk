@@ -440,7 +440,7 @@ pub fn signal_matrix_cell_text(cell : SignalMatrixCell) -> String {
 
 ///|
 pub fn signal_matrix_text(matrix : SignalMatrix) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date=" +
     matrix.date +
@@ -487,7 +487,7 @@ pub fn signal_matrix_cell_csv(cell : SignalMatrixCell) -> String {
 
 ///|
 pub fn signal_matrix_csv(matrix : SignalMatrix) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(signal_matrix_cell_csv_header())
   for cell in matrix.cells {
     builder.write_string("\n" + signal_matrix_cell_csv(cell))
@@ -763,7 +763,7 @@ pub fn signal_matrix_kind_metrics_header() -> String {
 
 ///|
 pub fn signal_matrix_kind_metrics_csv_all(matrix : SignalMatrix) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(signal_matrix_kind_metrics_header())
   for kind in signal_matrix_kinds() {
     builder.write_string("\n" + signal_matrix_kind_metrics_csv(matrix, kind))

@@ -326,7 +326,7 @@ pub fn record_query_record_csv(record : DailyRecord) -> String {
 
 ///|
 pub fn record_query_csv(result : RecordQueryResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(record_query_csv_header())
   for record in result.records {
     builder.write_string("\n" + record_query_record_csv(record))

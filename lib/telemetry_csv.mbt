@@ -74,7 +74,7 @@ pub fn parse_decimal_value(text : String) -> Double? {
 ///|
 fn split_csv_fields(line : String) -> Array[String] {
   let fields = []
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   let mut quoted = false
   let mut escaped_quote = false
   for character in line {

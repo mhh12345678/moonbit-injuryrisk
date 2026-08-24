@@ -494,7 +494,7 @@ pub fn progression_dashboard_comparison_text(
 
 ///|
 pub fn progression_dashboard_text(dashboard : ProgressionDashboard) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     dashboard.status +
@@ -600,7 +600,7 @@ pub fn progression_dashboard_item_csv(
 
 ///|
 pub fn progression_dashboard_csv(dashboard : ProgressionDashboard) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(progression_dashboard_csv_header())
   for item in dashboard.items {
     builder.write_string("\n" + progression_dashboard_item_csv(item))

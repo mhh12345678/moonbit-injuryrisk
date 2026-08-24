@@ -273,7 +273,7 @@ pub fn session_day_csv(day : SessionDaySummary) -> String {
 
 ///|
 pub fn session_analytics_csv(analytics : SessionAnalytics) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(session_day_csv_header())
   for day in analytics.days {
     builder.write_string("\n")

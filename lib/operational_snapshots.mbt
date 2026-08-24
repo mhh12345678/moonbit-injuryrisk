@@ -701,7 +701,7 @@ pub fn operational_snapshot_csv(snapshot : OperationalSnapshot) -> String {
 pub fn operational_snapshot_window_csv(
   window : OperationalSnapshotWindow,
 ) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(operational_snapshot_csv_header())
   for snapshot in window.snapshots {
     builder.write_string("\n" + operational_snapshot_csv(snapshot))

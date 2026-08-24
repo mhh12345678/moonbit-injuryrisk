@@ -567,7 +567,7 @@ pub fn outcome_window_view_point_csv(point : OutcomeWindowViewPoint) -> String {
 
 ///|
 pub fn outcome_window_view_csv(view : OutcomeWindowView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(outcome_window_view_csv_header())
   for point in view.points {
     builder.write_string("\n" + outcome_window_view_point_csv(point))

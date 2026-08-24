@@ -357,7 +357,7 @@ pub fn audit_has_blocking_outcome(trail : DecisionAuditTrail) -> Bool {
 
 ///|
 pub fn decision_audit_text(trail : DecisionAuditTrail) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "run=" +
     trail.run_id +
@@ -409,7 +409,7 @@ pub fn decision_audit_csv(entry : DecisionAuditEntry) -> String {
 
 ///|
 pub fn decision_audit_csv_text(trail : DecisionAuditTrail) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(decision_audit_csv_header())
   for entry in trail.entries {
     builder.write_string("\n")

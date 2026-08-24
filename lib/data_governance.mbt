@@ -611,7 +611,7 @@ pub fn governance_issue_text(issue : GovernanceIssue) -> String {
 
 ///|
 pub fn governance_text(report : GovernanceReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     governance_status_name(report.status) +
@@ -677,7 +677,7 @@ pub fn governance_issue_csv(issue : GovernanceIssue) -> String {
 
 ///|
 pub fn governance_csv(report : GovernanceReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(governance_issue_csv_header())
   for issue in report.issues {
     builder.write_string("\n" + governance_issue_csv(issue))

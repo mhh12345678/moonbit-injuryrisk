@@ -415,7 +415,7 @@ pub fn handoff_reproducible(
 
 ///|
 pub fn handoff_text(handoff : ClinicalHandoff) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "id=" +
     handoff.handoff_id +
@@ -496,7 +496,7 @@ pub fn handoff_evidence_csv(evidence : HandoffEvidence) -> String {
 
 ///|
 pub fn handoff_csv(handoff : ClinicalHandoff) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(handoff_csv_header())
   for evidence in handoff.evidence {
     builder.write_string("\n" + handoff_evidence_csv(evidence))

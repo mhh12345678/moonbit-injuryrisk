@@ -137,7 +137,7 @@ pub fn workflow_is_accepted(result : WorkflowResult) -> Bool {
 
 ///|
 pub fn workflow_report_text(result : WorkflowResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   for line in result.audit {
     builder.write_string(line)
     builder.write_string("\n")

@@ -252,7 +252,7 @@ pub fn decision_run_summary(run : DecisionRun) -> String {
 
 ///|
 pub fn decision_run_text(run : DecisionRun) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(decision_run_summary(run))
   builder.write_string("\nquality=" + quality_gate_summary(run.quality))
   builder.write_string(
@@ -270,7 +270,7 @@ pub fn decision_run_text(run : DecisionRun) -> String {
 
 ///|
 pub fn decision_run_csv(run : DecisionRun) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("field,value")
   builder.write_string("\nstatus," + run.status)
   builder.write_string("\naccepted," + run.accepted.to_string())

@@ -103,7 +103,7 @@ pub fn assess_injury_risk(
     acc.max(r.rule.severity)
   })
 
-  let summary_sb = StringBuilder::new()
+  let summary_sb = StringBuilder()
   summary_sb.write_string("Overall risk level is ")
   summary_sb.write_string(
     match overall_risk {

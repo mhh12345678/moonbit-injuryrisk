@@ -379,7 +379,7 @@ pub fn adherence_day_csv(day : AdherenceDay) -> String {
 
 ///|
 pub fn adherence_analytics_csv(analytics : AdherenceAnalytics) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(adherence_day_csv_header())
   for day in analytics.days {
     builder.write_string("\n")

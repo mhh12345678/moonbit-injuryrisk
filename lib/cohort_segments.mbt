@@ -302,7 +302,7 @@ pub fn cohort_segment_csv(segment : CohortSegment) -> String {
 
 ///|
 pub fn cohort_segments_csv(segments : Array[CohortSegment]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(cohort_segment_csv_header())
   for segment in segments {
     builder.write_string("\n")

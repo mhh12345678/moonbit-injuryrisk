@@ -174,7 +174,7 @@ pub fn input_contract_message(result : InputContractResult) -> String {
 
 ///|
 pub fn input_contract_text(result : InputContractResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(input_contract_message(result))
   for message in result.messages {
     builder.write_string("\n- " + message)

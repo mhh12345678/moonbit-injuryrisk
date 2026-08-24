@@ -270,7 +270,7 @@ pub fn manual_review_text(review : ManualReview) -> String {
 
 ///|
 pub fn review_register_text(register : ReviewRegister) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     register.status +
@@ -318,7 +318,7 @@ pub fn manual_review_csv(review : ManualReview) -> String {
 
 ///|
 pub fn review_register_csv(register : ReviewRegister) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(manual_review_csv_header())
   for review in register.reviews {
     builder.write_string("\n")

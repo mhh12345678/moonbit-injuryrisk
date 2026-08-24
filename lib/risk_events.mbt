@@ -519,7 +519,7 @@ pub fn risk_event_text(event : RiskEvent) -> String {
 
 ///|
 pub fn event_log_text(log : EventLog) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     log.status +
@@ -561,7 +561,7 @@ pub fn risk_event_csv(event : RiskEvent) -> String {
 
 ///|
 pub fn event_log_csv(log : EventLog) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(risk_event_csv_header())
   for event in log.events {
     builder.write_string("\n")

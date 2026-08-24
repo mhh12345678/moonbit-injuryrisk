@@ -564,7 +564,7 @@ pub fn load_point_csv(point : LoadPoint) -> String {
 
 ///|
 pub fn load_model_csv(summary : LoadModelSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(load_point_csv_header())
   for point in summary.points {
     builder.write_string("\n")

@@ -327,7 +327,7 @@ pub fn export_section_kinds() -> Array[ExportSectionKind] {
 
 ///|
 pub fn export_bundle_text(bundle : ExportBundle) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "run=" +
     bundle.run_id +
@@ -347,7 +347,7 @@ pub fn export_bundle_text(bundle : ExportBundle) -> String {
 
 ///|
 pub fn export_bundle_manifest(bundle : ExportBundle) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("section,title,row_count,included")
   for section in bundle.sections {
     builder.write_string(

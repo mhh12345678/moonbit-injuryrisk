@@ -609,7 +609,7 @@ pub fn service_kpi_report_message(report : ServiceKpiReport) -> String {
 
 ///|
 pub fn service_kpi_report_text(report : ServiceKpiReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(service_kpi_report_message(report))
   builder.write_string("\nrecommendation=" + report.snapshot.recommendation)
   for message in report.messages {
@@ -887,7 +887,7 @@ pub fn service_kpi_csv(kpi : ServiceKpi) -> String {
 
 ///|
 pub fn service_kpi_snapshot_csv(snapshot : ServiceKpiSnapshot) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(service_kpi_csv_header())
   for kpi in snapshot.kpis {
     builder.write_string("\n" + service_kpi_csv(kpi))
@@ -897,7 +897,7 @@ pub fn service_kpi_snapshot_csv(snapshot : ServiceKpiSnapshot) -> String {
 
 ///|
 pub fn service_kpi_snapshot_text(snapshot : ServiceKpiSnapshot) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "run=" +
     snapshot.run_id +
@@ -1121,7 +1121,7 @@ pub fn service_kpi_target_csv(target : ServiceKpiTarget) -> String {
 
 ///|
 pub fn service_kpi_targets_csv(targets : Array[ServiceKpiTarget]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(service_kpi_target_csv_header())
   for target in targets {
     builder.write_string("\n" + service_kpi_target_csv(target))

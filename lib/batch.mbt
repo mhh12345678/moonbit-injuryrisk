@@ -169,7 +169,7 @@ pub fn batch_row_csv(row : BatchRow) -> String {
 
 ///|
 pub fn batch_report_csv(report : BatchReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date,risk_level,risk_score,readiness_score,load,acwr,recovery,quality\n",
   )

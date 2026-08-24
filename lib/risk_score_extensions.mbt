@@ -648,7 +648,7 @@ pub fn risk_score_policy_normalized(
 
 ///|
 pub fn risk_score_text(profile : RiskScoreProfile) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date=" +
     profile.date +
@@ -754,7 +754,7 @@ pub fn risk_score_csv(profile : RiskScoreProfile) -> String {
 
 ///|
 pub fn risk_score_window_csv(window : RiskScoreWindow) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(risk_score_csv_header())
   for profile in window.profiles {
     builder.write_string("\n" + risk_score_csv(profile))

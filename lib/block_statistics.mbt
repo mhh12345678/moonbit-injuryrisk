@@ -350,7 +350,7 @@ pub fn block_csv(block : BlockStatistics) -> String {
 
 ///|
 pub fn blocks_csv(blocks : Array[BlockStatistics]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(block_csv_header())
   for block in blocks {
     builder.write_string("\n")

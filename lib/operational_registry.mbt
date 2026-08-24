@@ -478,7 +478,7 @@ pub fn registry_content(registry : OperationalRegistry, id : String) -> String {
 
 ///|
 pub fn registry_text(registry : OperationalRegistry) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "name=" +
     registry.name +
@@ -530,7 +530,7 @@ pub fn registry_csv(artifact : RegistryArtifact) -> String {
 
 ///|
 pub fn registry_csv_text(registry : OperationalRegistry) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(registry_csv_header())
   for artifact in registry.artifacts {
     builder.write_string("\n")

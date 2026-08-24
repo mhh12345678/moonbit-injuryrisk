@@ -216,7 +216,7 @@ pub fn factor_text(factor : RiskFactorView) -> String {
 
 ///|
 pub fn factor_report_text(report : RiskFactorReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     report.status +
@@ -263,7 +263,7 @@ pub fn factor_csv(factor : RiskFactorView) -> String {
 
 ///|
 pub fn factor_report_csv(report : RiskFactorReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(factor_csv_header())
   for factor in report.factors {
     builder.write_string("\n")

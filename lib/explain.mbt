@@ -42,7 +42,7 @@ pub fn explain_assessment(assessment : ComprehensiveAssessment) -> Explanation {
 
 ///|
 pub fn explanation_text(explanation : Explanation) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(explanation.headline)
   builder.write_string("\nEvidence:")
   for item in explanation.evidence {

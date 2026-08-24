@@ -445,7 +445,7 @@ pub fn service_query_result_text(result : ServiceQueryResult) -> String {
 
 ///|
 pub fn service_query_text(batch : ServiceQueryBatch) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "run=" +
     batch.run_id +
@@ -486,7 +486,7 @@ pub fn service_query_csv(result : ServiceQueryResult) -> String {
 
 ///|
 pub fn service_query_batch_csv(batch : ServiceQueryBatch) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(service_query_csv_header())
   for result in batch.results {
     builder.write_string("\n" + service_query_csv(result))

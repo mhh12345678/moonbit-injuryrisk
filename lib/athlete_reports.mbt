@@ -617,7 +617,7 @@ pub fn athlete_report_checksum_valid(report : AthleteReport) -> Bool {
 
 ///|
 pub fn athlete_report_text(report : AthleteReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "report=" +
     report.report_id +
@@ -704,7 +704,7 @@ pub fn athlete_report_section_csv(section : AthleteReportSection) -> String {
 
 ///|
 pub fn athlete_report_csv(report : AthleteReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(athlete_report_section_csv_header())
   for section in report.sections {
     builder.write_string("\n" + athlete_report_section_csv(section))
@@ -781,7 +781,7 @@ pub fn athlete_report_bundle_valid(bundle : AthleteReportBundle) -> Bool {
 
 ///|
 pub fn athlete_report_bundle_text(bundle : AthleteReportBundle) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "reports=" +
     bundle.reports.length().to_string() +
@@ -809,7 +809,7 @@ pub fn athlete_report_bundle_text(bundle : AthleteReportBundle) -> String {
 
 ///|
 pub fn athlete_report_bundle_csv(bundle : AthleteReportBundle) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(athlete_report_summary_header().join(","))
   for report in bundle.reports {
     builder.write_string("\n" + athlete_report_summary(report).join(","))

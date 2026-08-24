@@ -367,7 +367,7 @@ pub fn queue_item_text(item : CoachQueueItem) -> String {
 
 ///|
 pub fn workspace_text(workspace : CoachWorkspace) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     workspace.status +
@@ -432,7 +432,7 @@ pub fn workspace_queue_csv(item : CoachQueueItem) -> String {
 
 ///|
 pub fn workspace_csv(workspace : CoachWorkspace) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(workspace_queue_csv_header())
   for item in workspace.queue {
     builder.write_string("\n")

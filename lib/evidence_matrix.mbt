@@ -221,7 +221,7 @@ pub fn evidence_item_text(item : EvidenceItem) -> String {
 
 ///|
 pub fn evidence_matrix_text(matrix : EvidenceMatrix) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     matrix.status +
@@ -278,7 +278,7 @@ pub fn evidence_csv(item : EvidenceItem) -> String {
 
 ///|
 pub fn evidence_matrix_csv(matrix : EvidenceMatrix) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(evidence_csv_header())
   for item in matrix.items {
     builder.write_string("\n")

@@ -396,7 +396,7 @@ pub fn recovery_checkin_csv(checkin : RecoveryCheckin) -> String {
 
 ///|
 pub fn recovery_protocol_csv(protocol : RecoveryProtocol) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(recovery_checkin_csv_header())
   for checkin in protocol.checkins {
     builder.write_string("\n")

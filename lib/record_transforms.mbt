@@ -397,7 +397,7 @@ pub fn record_transform_logs_valid(result : RecordTransformResult) -> Bool {
 
 ///|
 pub fn record_transform_text(result : RecordTransformResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     result.status +
@@ -468,7 +468,7 @@ pub fn record_transform_log_csv(log : RecordTransformLog) -> String {
 
 ///|
 pub fn record_transform_csv(result : RecordTransformResult) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(record_transform_csv_header())
   for log in result.logs {
     builder.write_string("\n" + record_transform_log_csv(log))

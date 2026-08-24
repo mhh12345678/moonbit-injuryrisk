@@ -160,7 +160,7 @@ pub fn service_contract_message(report : ServiceContractReport) -> String {
 
 ///|
 pub fn service_contract_text(report : ServiceContractReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(service_contract_message(report))
   for message in report.messages {
     builder.write_string("\n- " + message)

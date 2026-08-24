@@ -421,7 +421,7 @@ pub fn run_batch_row_text(row : RunBatchRow) -> String {
 
 ///|
 pub fn run_batch_text(view : RunBatchView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     view.status +
@@ -487,7 +487,7 @@ pub fn run_batch_row_csv(row : RunBatchRow) -> String {
 
 ///|
 pub fn run_batch_csv(view : RunBatchView) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(run_batch_csv_header())
   for row in view.rows {
     builder.write_string("\n" + run_batch_row_csv(row))

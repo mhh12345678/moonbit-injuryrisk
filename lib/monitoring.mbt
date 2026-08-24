@@ -777,7 +777,7 @@ pub fn monitoring_summary_text(summary : MonitoringSummary) -> String {
 
 ///|
 pub fn monitoring_run_text(run : MonitoringRun) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(monitoring_summary_text(run.summary))
   for alert in monitoring_alerts(run) {
     builder.write_string("\n")
@@ -812,7 +812,7 @@ pub fn monitoring_alert_csv(alert : MonitoringAlert) -> String {
 
 ///|
 pub fn monitoring_run_csv(run : MonitoringRun) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(monitoring_alert_csv_header())
   for alert in monitoring_alerts(run) {
     builder.write_string("\n")

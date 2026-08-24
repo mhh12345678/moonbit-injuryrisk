@@ -215,7 +215,7 @@ pub fn batch_decision_text(row : BatchDecisionRow) -> String {
 
 ///|
 pub fn batch_decision_report_text(report : BatchDecisionReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     report.status +
@@ -268,7 +268,7 @@ pub fn batch_decision_csv(row : BatchDecisionRow) -> String {
 
 ///|
 pub fn batch_decision_report_csv(report : BatchDecisionReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(batch_decision_csv_header())
   for row in report.rows {
     builder.write_string("\n")

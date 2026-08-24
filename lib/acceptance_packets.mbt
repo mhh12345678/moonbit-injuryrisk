@@ -1084,7 +1084,7 @@ pub fn acceptance_packet_section_text(
 
 ///|
 pub fn acceptance_packet_text(packet : AcceptancePacket) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     packet.status +
@@ -1145,7 +1145,7 @@ pub fn acceptance_packet_metric_text(metric : AcceptanceMetric) -> String {
 
 ///|
 pub fn acceptance_packet_metrics_text(packet : AcceptancePacket) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   for metric in acceptance_packet_metrics(packet) {
     builder.write_string("\n" + acceptance_packet_metric_text(metric))
   }
@@ -1230,7 +1230,7 @@ pub fn acceptance_packet_metric_csv(metric : AcceptanceMetric) -> String {
 
 ///|
 pub fn acceptance_packet_metrics_csv(packet : AcceptancePacket) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(acceptance_packet_metric_csv_header())
   for metric in acceptance_packet_metrics(packet) {
     builder.write_string("\n" + acceptance_packet_metric_csv(metric))
@@ -2157,7 +2157,7 @@ pub fn acceptance_packet_batch_contract(
 pub fn acceptance_packet_batch_text(
   packets : Array[AcceptancePacket],
 ) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "packets=" +
     packets.length().to_string() +
@@ -2178,7 +2178,7 @@ pub fn acceptance_packet_batch_text(
 
 ///|
 pub fn acceptance_packet_batch_csv(packets : Array[AcceptancePacket]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(acceptance_packet_csv_header())
   for packet in packets {
     builder.write_string("\n" + acceptance_packet_csv_row(packet))

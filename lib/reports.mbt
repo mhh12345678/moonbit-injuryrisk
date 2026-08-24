@@ -34,7 +34,7 @@ pub fn default_report_options() -> ReportOptions {
 
 ///|
 fn csv_escape(value : String) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   let mut quoted = false
   for character in value {
     if character == '"' {
@@ -56,7 +56,7 @@ fn csv_escape(value : String) -> String {
 
 ///|
 pub fn records_to_csv(records : Array[DailyRecord]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date,training_duration,training_intensity,load,pain_level,pain_site,sleep_hours,sleep_quality,fatigue\n",
   )
@@ -90,7 +90,7 @@ pub fn records_to_csv(records : Array[DailyRecord]) -> String {
 
 ///|
 pub fn signals_to_csv(signals : Array[RiskSignal]) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "id,kind,title,value,threshold,severity,confidence,evidence,action\n",
   )
@@ -119,7 +119,7 @@ pub fn signals_to_csv(signals : Array[RiskSignal]) -> String {
 
 ///|
 pub fn timeline_to_csv(timeline : RiskTimeline) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "date,risk_level,risk_score,readiness_score,acute_load,chronic_load,acwr,recovery_score,signal_count\n",
   )
@@ -204,7 +204,7 @@ fn completeness_ratio_from_report(report : QualityReport) -> Double {
 
 ///|
 pub fn render_signals_section(signals : SignalSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("signals\n  count=")
   builder.write_string(signals.signal_count.to_string())
   builder.write_string(" high=")
@@ -222,7 +222,7 @@ pub fn render_signals_section(signals : SignalSummary) -> String {
 
 ///|
 pub fn render_plan_section(plan : ActionPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string("action plan\n  focus=")
   builder.write_string(plan.focus)
   builder.write_string(" rest_days=")
@@ -245,7 +245,7 @@ pub fn render_assessment(
 ) -> RiskReport {
   let body = match options.format {
     PlainText => {
-      let builder = StringBuilder::new()
+      let builder = StringBuilder()
       builder.write_string(assessment.summary)
       builder.write_string("\n")
       builder.write_string(render_load_section(assessment.load))

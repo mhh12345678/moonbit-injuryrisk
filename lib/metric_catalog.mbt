@@ -147,7 +147,7 @@ pub fn metric_direction_is_positive(metric : Metric, change : Double) -> Bool {
 
 ///|
 pub fn metric_catalog_text() -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   for description in metric_catalog() {
     builder.write_string(
       description.name +

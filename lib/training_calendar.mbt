@@ -525,7 +525,7 @@ pub fn schedule_day_csv(day : ScheduleDay) -> String {
 
 ///|
 pub fn schedule_csv(summary : ScheduleSummary) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(schedule_day_csv_header())
   for day in summary.days {
     builder.write_string("\n")

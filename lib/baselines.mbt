@@ -430,7 +430,7 @@ pub fn baseline_drift_text(item : BaselineDrift) -> String {
 
 ///|
 pub fn baseline_report_text(report : BaselineReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "label=" +
     report.profile.label +
@@ -488,7 +488,7 @@ pub fn baseline_observation_csv(item : BaselineObservation) -> String {
 
 ///|
 pub fn baseline_report_csv(report : BaselineReport) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(baseline_observation_csv_header())
   for observation in report.observations {
     builder.write_string("\n")

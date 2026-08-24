@@ -531,7 +531,7 @@ pub fn operational_scorecard_summary(
 
 ///|
 pub fn operational_scorecard_text(scorecard : OperationalScorecard) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(operational_scorecard_summary(scorecard))
   builder.write_string(
     "\nbands=risk:" +
@@ -1242,7 +1242,7 @@ pub fn operational_scorecard_row_text(row : OperationalScorecardRow) -> String {
 pub fn operational_scorecard_rows_text(
   rows : Array[OperationalScorecardRow],
 ) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   for row in rows {
     builder.write_string("\n" + operational_scorecard_row_text(row))
   }
@@ -1283,7 +1283,7 @@ pub fn operational_scorecard_row_csv(row : OperationalScorecardRow) -> String {
 pub fn operational_scorecard_rows_csv(
   rows : Array[OperationalScorecardRow],
 ) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(operational_scorecard_row_csv_header())
   for row in rows {
     builder.write_string("\n" + operational_scorecard_row_csv(row))

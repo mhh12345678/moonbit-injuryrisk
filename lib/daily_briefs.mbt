@@ -198,7 +198,7 @@ pub fn brief_text(brief : DailyBrief) -> String {
 
 ///|
 pub fn brief_series_text(series : BriefSeries) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     series.status +
@@ -249,7 +249,7 @@ pub fn daily_brief_csv(brief : DailyBrief) -> String {
 
 ///|
 pub fn brief_series_csv(series : BriefSeries) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(daily_brief_csv_header())
   for brief in series.briefs {
     builder.write_string("\n")

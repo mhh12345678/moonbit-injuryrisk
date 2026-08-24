@@ -597,7 +597,7 @@ pub fn review_intervention(
 
 ///|
 pub fn intervention_plan_text(plan : InterventionPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(
     "status=" +
     plan.status +
@@ -655,7 +655,7 @@ pub fn intervention_csv(item : Intervention) -> String {
 
 ///|
 pub fn intervention_plan_csv(plan : InterventionPlan) -> String {
-  let builder = StringBuilder::new()
+  let builder = StringBuilder()
   builder.write_string(intervention_csv_header())
   for item in plan.interventions {
     builder.write_string("\n")
