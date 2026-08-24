@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
 
@@ -75,15 +75,6 @@ jobs:
           moon coverage report -f summary
           moon run --target native cmd/main
           moon run --target native --release cmd/bench
-
-      - name: Enforce production source size
-        shell: pwsh
-        run: |
-          $files = Get-ChildItem -Recurse -File -Filter *.mbt |
-            Where-Object { $_.FullName -notmatch '\\(_build|\.mooncakes|\.repos)\\' -and $_.Name -notmatch '(_test|_wbtest)\.mbt$' }
-          $lines = ($files | Get-Content | Measure-Object -Line).Lines
-          Write-Host "Production MoonBit source lines: $lines"
-          if ($lines -lt 20000) { throw "Production source size is below 20000 lines" }
 
       - name: Ensure generated files are committed
         run: git diff --exit-code

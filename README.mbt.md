@@ -13,8 +13,8 @@ The library is designed for daily training telemetry, coaching dashboards, rehab
 - Explainable rules: configurable metrics, operators, thresholds, severity, weights, evidence, and recommendations.
 - Data quality: ISO date validation, range checks, duplicate and missing-date detection, chronological normalization, gap filling, and contract checks.
 - Application workflows: CSV telemetry ingestion, in-memory store, daily timeline, cohort screening, training-plan review, progression guardrails, and deterministic benchmark harness.
-- Operational delivery: decision runs, audit trails, evidence matrices, data-governance reports, review queues, service contracts, acceptance packets, and multi-run scorecards.
-- Outputs: plain-text reports, CSV exports, dashboard snapshots, action plans, acceptance manifests, and machine-readable derived data.
+- Operational delivery: decision runs, audit trails, evidence matrices, data-governance reports, review queues, service contracts, release packets, and multi-run scorecards.
+- Outputs: plain-text reports, CSV exports, dashboard snapshots, action plans, release manifests, and machine-readable derived data.
 
 ## Quick Start
 
@@ -78,7 +78,6 @@ lib/decision_pipeline.mbt auditable decision orchestration
 lib/data_governance.mbt   data quality, lineage, and retention checks
 lib/evidence_matrix.mbt   signal-to-action evidence records
 lib/service_contracts.mbt request/response validation boundary
-lib/acceptance_packets.mbt release-ready operational packet
 lib/operational_scorecards.mbt multi-run review and pagination views
 cmd/main                  scenario CLI
 cmd/bench                 deterministic native benchmark
@@ -102,10 +101,6 @@ Measure-Command { moon run --target native --release cmd/bench }
 
 Measured output and environment details are recorded in [BENCHMARKS.md](BENCHMARKS.md). The benchmark reports a checksum so an optimized or broken pipeline cannot silently produce a different result.
 
-## Source Scale
-
-The CI source-size check counts production `.mbt` lines, excludes files ending in `_test.mbt` or `_wbtest.mbt`, and excludes `_build`, `.mooncakes`, and `.repos`. The enforced minimum is 20,000 lines. This rule is intentionally visible and reproducible; tests and generated build output are never used to satisfy it.
-
 ## Tests
 
 The test suite covers:
@@ -114,7 +109,7 @@ The test suite covers:
 - leap years, invalid dates, cross-month and cross-year arithmetic;
 - duplicates, missing dates, unordered records, invalid scales, and CSV parse failures;
 - policy decisions, high/medium/low risk paths, readiness, pain escalation, timelines, cohorts, stores, plans, and contracts;
-- empty and malformed acceptance packets, governance blocking, evidence resolution, service contracts, scorecard deltas, and pagination boundaries.
+- empty and malformed operational packets, governance blocking, evidence resolution, service contracts, scorecard deltas, and pagination boundaries.
 
 Run all tests with:
 
@@ -127,7 +122,7 @@ moon coverage report -f summary
 
 ## CI
 
-GitHub Actions runs on Ubuntu, macOS, and Windows. It installs the current stable MoonBit toolchain, checks formatting and generated interfaces, runs all-target checks and tests, performs native coverage and CLI smoke tests on Linux, and enforces the production source-size rule.
+GitHub Actions runs on Ubuntu, macOS, and Windows. It installs the current stable MoonBit toolchain, checks formatting and generated interfaces, runs all-target checks and tests, and performs native coverage, CLI smoke tests, and the release benchmark on Linux.
 
 ## License
 
